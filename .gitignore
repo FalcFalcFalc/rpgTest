@@ -1,0 +1,11 @@
+# Ignore Everything
+/*
+
+# Except for these:
+
+# empty-unity
+!/.gitignore
+!/.gitattributes
+!/Assets
+!/Packages
+!/ProjectSettings
