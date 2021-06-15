@@ -10,9 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9129e053ff2340649aa0c24604cff45e, type: 3}
-  m_Name: basicHeal
+  m_Name: Heal
   m_EditorClassIdentifier: 
   abilityName: Heal
-  abilityDescription: Heal your basic inteligence to an ally
+  abilityDescription: Heal your basic INT
   particles: {fileID: 3688552946960053520, guid: 44984585ce2106040a4e1223788e3608, type: 3}
-  baseDamage: 0
+  indicator: {fileID: 1228602051802193864, guid: d0d0646fef1e22248a99d56820f380ee, type: 3}
+  baseHealing: 0
+  intMultiplier: 1

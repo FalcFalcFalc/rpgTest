@@ -9,10 +9,13 @@ public class Healing : Abilities
     [Range(0,10)]
     public float intMultiplier = 1;
     public override void Trigger(Unit caster, Unit[] targets){
-        ParticleSystem ps = Instantiate(particles, targets[0].transform);
-        ps.Play();
-        targets[0].ReceiveHealing(caster.GetInteligence() + baseHealing);
+        Heal(caster, targets[0]);
+    }
 
+    void Heal(Unit caster, Unit target){
+        PlayParticlesOnTarget(target);
+        PingNumberOnTarget(caster.GetInteligence() + baseHealing,false,target);
+        target.ReceiveHealing(caster.GetInteligence() + baseHealing);
     }
 
 }

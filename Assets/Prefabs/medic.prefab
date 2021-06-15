@@ -298,14 +298,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeUnit: 0
-  baseAttack: 2
-  baseInteligence: 2
-  baseDefense: 0
+  baseAttack: 10
+  baseInteligence: 25
+  baseDefense: 1
   baseAgility: 0
-  maxHp: 6
+  maxHp: 120
   moves:
-  - {fileID: 11400000, guid: c99dd1bbb09f62e4c9ef143bd27ba2c9, type: 2}
-  - {fileID: 11400000, guid: fa47113bd04921d48b74743807da1632, type: 2}
+  - {fileID: 11400000, guid: 1dc02505e0872c241923eb9031ada9fd, type: 2}
+  - {fileID: 11400000, guid: 86db7616de19423439f2a3e0690848dc, type: 2}
   hpBar: {fileID: 1755805094321934622}
   turnHandler: {fileID: 0}
   cursor: {fileID: 0}

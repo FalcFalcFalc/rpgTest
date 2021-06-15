@@ -63,7 +63,7 @@ public abstract class Unit : MonoBehaviour
         int i = 0;
         bool retorno = false;
         while (i < moves.Count && !retorno){
-            retorno = moves[i].GetType() == typeof(BasicAttacks);
+            retorno = moves[i].GetType() == typeof(BasicAttack);
 
             i++;
         }
@@ -84,12 +84,14 @@ public abstract class Unit : MonoBehaviour
     public void Attack(Unit target){
         moves[0].Trigger(this,new[] {target});
         //target.ReceiveDamage(baseAttack + 1);
-        NextTurn();
+        StartCoroutine(DelayBetweenTurns());
+        //NextTurn();
     }
 
     public void Heal(Unit target){
         moves[1].Trigger(this,new[] {target});
-        NextTurn();
+        StartCoroutine(DelayBetweenTurns());
+        //NextTurn();
     }
 
     protected void NextTurn(){
@@ -103,11 +105,15 @@ public abstract class Unit : MonoBehaviour
         turnHandler.NextTurn();
     }
 
-    public void ReceiveDamage(int value){
+    public int ReceiveDamage(int value){
         if(value > baseDefense){
             totalDamage = value - baseDefense;
             LeanTween.value(gameObject, currentHp, currentHp - totalDamage, .19f).setEaseOutBack().setOnUpdate(AnimateHPBar);
             currentHp -= totalDamage;
+            return totalDamage;
+        }
+        else{
+            return 0;
         }
     }
 

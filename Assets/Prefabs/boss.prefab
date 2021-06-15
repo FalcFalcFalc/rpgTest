@@ -99,13 +99,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeUnit: 0
-  baseAttack: 4
-  baseInteligence: 1
-  baseDefense: 1
+  baseAttack: 30
+  baseInteligence: 0
+  baseDefense: 2
   baseAgility: 0
-  maxHp: 20
+  maxHp: 240
   moves:
-  - {fileID: 11400000, guid: 3d4067d8f54a03f43b61ff066856561a, type: 2}
+  - {fileID: 11400000, guid: 7203325419071634d9c96b6db5ddabbc, type: 2}
   hpBar: {fileID: 2657215906648942066}
   turnHandler: {fileID: 0}
   cursor: {fileID: 0}

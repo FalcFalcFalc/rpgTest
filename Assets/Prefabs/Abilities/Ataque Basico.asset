@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b80a18a8e282d2b49bf5cf7e2935539a, type: 3}
-  m_Name: basicAttack
+  m_Name: Ataque Basico
   m_EditorClassIdentifier: 
   abilityName: Strike
-  abilityDescription: Strike an enemy with your base strength
+  abilityDescription: Attack with your basic ATK
   particles: {fileID: 6889370291284613428, guid: 7c107c4157e783a4e8e224f2b6807b4b, type: 3}
+  indicator: {fileID: 6667520244712726511, guid: 386e351239ba4c042adca7855efc79dc, type: 3}
   baseDamage: 0
   atkMultiplier: 1
-  critChance: 5
-  critMultiplier: 2
+  critChance: 10
+  critMultiplier: 1.25

@@ -47,6 +47,7 @@ public class TurnHandler : MonoBehaviour
     public Unit GetCurrentUnit(){
         return units[currentUnit];
     }
+    
     public void NextTurn(){
         //print(units.Count);
         if(GetPlayer().Count == 0){
