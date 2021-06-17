@@ -27,6 +27,8 @@ public class Enemigo : Unit
                 }
             }
             if(mostWoundedAlly.GetCurrentHpPercentage() < .45f || !hasAttackMoves()){
+                // CameraHandler.Focus(mostWoundedAlly.transform);
+                // yield return new WaitForSeconds(.65f);
                 Heal(mostWoundedAlly);
             }
             else
@@ -42,13 +44,16 @@ public class Enemigo : Unit
         {
             NextTurn();
         }
+
+        
     }
 
+
+    Coroutine ia;
     protected override void OnActivate(){
-        StartCoroutine(ArtificialInteligence());
+        ia = StartCoroutine(ArtificialInteligence());
     }
     protected override void OnTurnEnd(){
-
     }
 
 }

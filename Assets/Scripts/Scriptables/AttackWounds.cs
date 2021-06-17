@@ -10,8 +10,8 @@ public class AttackWounds : BasicAttack
     [Tooltip("If health is at 0, damage will be amplified by (1+value).")]
     public float missingHealthMultiplier = .25f;
     
-    protected override void ModifyDamage(ref int value, Unit target){
-        value = Mathf.RoundToInt(value * (1 + (1 - target.GetCurrentHpPercentage()) * missingHealthMultiplier));
+    protected override void ModifyDamage(ref float value, Unit target){
+        value = value * (1 + (1 - target.GetCurrentHpPercentage()) * missingHealthMultiplier);
     }
 
 

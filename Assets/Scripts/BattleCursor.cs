@@ -16,7 +16,7 @@ public class BattleCursor : MonoBehaviour
     }
 
     public void Bump(){
-        LeanTween.move(gameObject, transform.position + Vector3.up, .5f).setEase(LeanTweenType.easeSpring);
+        LeanTween.move(gameObject, transform.position + Vector3.up, .5f).setEase(LeanTweenType.punch);
     }
 
     Color destino = Color.red;
@@ -32,6 +32,8 @@ public class BattleCursor : MonoBehaviour
             ChangeColor(Color.cyan);
             if(Input.GetMouseButtonUp(0) && selected != null){
                 ts.GetCurrentUnit().Attack(selected);
+                Bump();
+                selected = null;
             }
         }
         else

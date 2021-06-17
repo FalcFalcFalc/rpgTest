@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Abilities/Basic Attack")]
-public class BasicAttack : Abilities
+public class BasicAttack : Ability
 {
     [Header("Attack Basic Stats")]
     public int baseDamage = 1;
@@ -14,22 +14,30 @@ public class BasicAttack : Abilities
     [Range(1.01f,10)]
     public float critMultiplier = 2;
 
-    public override void Trigger(Unit caster, Unit[] targets){
-        Attack(caster, targets[0]);
+    public override void Trigger(Unit caster, Unit target){
+        Attack(caster, target);
+    }
+
+    protected virtual void OnCritical(){
+        CameraHandler.ScreenShake(3,.5f);
     }
 
     void Attack(Unit caster, Unit target){
-        int damage = Mathf.RoundToInt(caster.GetAttack() * atkMultiplier) + baseDamage;
+        float damage = caster.GetAttack() * atkMultiplier + baseDamage;
         ModifyDamage(ref damage, target);
-        bool critical = Random.Range(0,100) <= critChance;
-        damage = target.ReceiveDamage(Mathf.RoundToInt(damage * (critical ? critMultiplier : 1)));
+        bool isCrit = Random.Range(0,100) <= critChance;
+        if(isCrit){
+            OnCritical();
+            damage *= critMultiplier;
+        }
+        int netDamage = target.ReceiveDamage(Mathf.RoundToInt(damage));
 
         PlayParticlesOnTarget(target);
         if(caster.GetComponent<Player>()){
-            PingNumberOnTarget(damage,critical,target);
+            PingNumberOnTarget(netDamage,isCrit,target);
         }
 
     }
-    protected virtual void ModifyDamage(ref int value, Unit target){}
+    protected virtual void ModifyDamage(ref float value, Unit target){}
 
 }

@@ -21,7 +21,7 @@ public class TurnHandler : MonoBehaviour
         List<Enemigo> retorno = new List<Enemigo>();
         foreach (Unit item in units)
         {
-            if(item.GetComponent<Enemigo>()){
+            if(!item.playable){
                 retorno.Add(item.GetComponent<Enemigo>());
             }
         }
@@ -32,7 +32,7 @@ public class TurnHandler : MonoBehaviour
         List<Player> retorno = new List<Player>();
         foreach (Unit item in units)
         {
-            if(item.GetComponent<Player>()){
+            if(item.playable){
                 retorno.Add(item.GetComponent<Player>());
             }
         }
@@ -49,7 +49,9 @@ public class TurnHandler : MonoBehaviour
     }
     
     public void NextTurn(){
-        //print(units.Count);
+        bool lastUnitWasPlayer = false;
+        if(currentUnit > -1) lastUnitWasPlayer = GetCurrentUnit().playable;
+
         if(GetPlayer().Count == 0){
             loseScreen.gameObject.SetActive(true);
         }
@@ -63,9 +65,23 @@ public class TurnHandler : MonoBehaviour
             if(currentUnit >= units.Count){
               currentUnit = 0;
             }
-            GetCurrentUnit().Activate();
-            playerActing = GetCurrentUnit().GetComponent<Player>();
+            
+            playerActing = GetCurrentUnit().playable;
+            // if(playerActing){
+            //     CameraHandler.Defocus();
+            // }
+            float delay = 0;
+            if(lastUnitWasPlayer && !playerActing){
+                delay += .2f;
+            }
+
+            StartCoroutine(EndTurnDelay(delay));
         }
+    }
+
+    IEnumerator EndTurnDelay(float time){
+        yield return new WaitForSeconds(time);
+        GetCurrentUnit().Activate();
     }
 
     // List<Unit> turnOrder;

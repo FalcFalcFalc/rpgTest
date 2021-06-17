@@ -42,7 +42,7 @@ public abstract class Unit : MonoBehaviour
     }
 
     [Header("Abilities")]
-    public List<Abilities> moves;
+    public List<Ability> moves;
 
     [Header("Dependancies")]
     [SerializeField] Slider hpBar;
@@ -82,26 +82,36 @@ public abstract class Unit : MonoBehaviour
     }
 
     public void Attack(Unit target){
-        moves[0].Trigger(this,new[] {target});
-        //target.ReceiveDamage(baseAttack + 1);
-        StartCoroutine(DelayBetweenTurns());
-        //NextTurn();
+        moves[0].Trigger(this,target);
+        target.ReceiveDamage(baseAttack + 1);
+        // StartCoroutine(DelayBetweenTurns());
+        NextTurn();
     }
 
     public void Heal(Unit target){
-        moves[1].Trigger(this,new[] {target});
-        StartCoroutine(DelayBetweenTurns());
-        //NextTurn();
+        moves[1].Trigger(this,target);
+        // StartCoroutine(DelayBetweenTurns());
+        NextTurn();
     }
 
     protected void NextTurn(){
         activeUnit = false;
         OnTurnEnd();
-        StartCoroutine(DelayBetweenTurns());
+        if(!playable){
+            StartCoroutine(DelayBetweenTurns());
+        }
+        else{
+            turnHandler.NextTurn();
+        }
+    }
+
+    public bool playable 
+    {
+        get{ return GetComponent<Player>();}
     }
 
     IEnumerator DelayBetweenTurns(){
-        yield return new WaitForSeconds(.20f);
+        yield return new WaitForSeconds(.0f);
         turnHandler.NextTurn();
     }
 
@@ -110,6 +120,13 @@ public abstract class Unit : MonoBehaviour
             totalDamage = value - baseDefense;
             LeanTween.value(gameObject, currentHp, currentHp - totalDamage, .19f).setEaseOutBack().setOnUpdate(AnimateHPBar);
             currentHp -= totalDamage;
+            
+            if(currentHp <= 0){
+                turnHandler.RemoveUnitFromInitiative(this);
+                if(!playable){
+                    StartCoroutine(AnimateDeath());
+                }
+            }
             return totalDamage;
         }
         else{
@@ -118,20 +135,13 @@ public abstract class Unit : MonoBehaviour
     }
 
     public void ReceiveHealing(int value){
-        LeanTween.value(gameObject, currentHp, currentHp + value, .19f).setEaseOutBack().setOnUpdate(AnimateHPBar);
         currentHp += value;
+        LeanTween.value(gameObject, currentHp, currentHp + value, .19f).setEaseOutBack().setOnUpdate(AnimateHPBar);
         if(currentHp > maxHp) currentHp = maxHp;
     }
 
     void AnimateHPBar(float value){
         hpBar.value = value;
-        if(value <= 0){
-            LeanTween.cancel(gameObject); // hacemos que la animacion pare y esta funcion no vuelva a ser llamada
-            turnHandler.RemoveUnitFromInitiative(this);
-            if(GetComponent<Enemigo>()){
-                StartCoroutine(AnimateDeath());
-            }
-        }
     }
 
     IEnumerator AnimateDeath(){
