@@ -301,7 +301,7 @@ MonoBehaviour:
   baseAttack: 10
   baseInteligence: 25
   baseDefense: 1
-  baseAgility: 0
+  baseAgility: 5
   maxHp: 120
   moves:
   - {fileID: 11400000, guid: 1dc02505e0872c241923eb9031ada9fd, type: 2}

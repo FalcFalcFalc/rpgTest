@@ -9,8 +9,9 @@ public class TurnHandler : MonoBehaviour
     [SerializeField] RectTransform winScreen;
     [SerializeField] RectTransform loseScreen;
 
+    Unit died = null;
     public void RemoveUnitFromInitiative(Unit who){
-        units.Remove(who);
+        died = who;
     }
 
     private void Start() {
@@ -45,12 +46,27 @@ public class TurnHandler : MonoBehaviour
 
     int currentUnit = -1;
     public Unit GetCurrentUnit(){
+        print(units.Count + " y " + currentUnit);
+
+        if(currentUnit >= units.Count){
+            currentUnit = 0;
+            print("Fuimos a 0: " + units.Count + " y " + currentUnit);
+        }
+
+
         return units[currentUnit];
     }
     
     public void NextTurn(){
+        if(died != null){        
+            units.Remove(died);
+            died = null;
+        }
+
         bool lastUnitWasPlayer = false;
-        if(currentUnit > -1) lastUnitWasPlayer = GetCurrentUnit().playable;
+        if(currentUnit > -1) {
+            lastUnitWasPlayer = GetCurrentUnit().playable;
+        }
 
         if(GetPlayer().Count == 0){
             loseScreen.gameObject.SetActive(true);
@@ -62,19 +78,11 @@ public class TurnHandler : MonoBehaviour
         else
         {
             currentUnit++;
-            if(currentUnit >= units.Count){
-              currentUnit = 0;
-            }
-            
             playerActing = GetCurrentUnit().playable;
-            // if(playerActing){
-            //     CameraHandler.Defocus();
-            // }
-            float delay = 0;
+            float delay = .1f;
             if(lastUnitWasPlayer && !playerActing){
                 delay += .2f;
             }
-
             StartCoroutine(EndTurnDelay(delay));
         }
     }

@@ -24,18 +24,30 @@ public class BasicAttack : Ability
 
     void Attack(Unit caster, Unit target){
         float damage = caster.GetAttack() * atkMultiplier + baseDamage;
-        ModifyDamage(ref damage, target);
-        bool isCrit = Random.Range(0,100) <= critChance;
-        if(isCrit){
-            OnCritical();
-            damage *= critMultiplier;
-        }
-        int netDamage = target.ReceiveDamage(Mathf.RoundToInt(damage));
 
-        PlayParticlesOnTarget(target);
-        if(caster.GetComponent<Player>()){
-            PingNumberOnTarget(netDamage,isCrit,target);
+        ModifyDamage(ref damage, target);
+
+        bool didDodge = Random.Range(0,100) <= target.GetAgility();
+        
+        if(!didDodge){
+            bool isCrit = Random.Range(0,100) <= critChance;
+
+            if(isCrit){
+                OnCritical();
+                damage *= critMultiplier;
+            }
+            int netDamage = target.ReceiveDamage(Mathf.RoundToInt(damage));
+
+            PlayParticlesOnTarget(target);
+            if(caster.playable){
+                PingNumberOnTarget(netDamage,isCrit,target);
+            }
         }
+        else if(caster.playable){
+            LeanTween.cancel(target.gameObject);
+            LeanTween.move(target.gameObject, Vector3.left * .25f, .75f).setEasePunch();
+        }
+        
 
     }
     protected virtual void ModifyDamage(ref float value, Unit target){}

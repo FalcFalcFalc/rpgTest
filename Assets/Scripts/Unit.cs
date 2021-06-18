@@ -7,6 +7,8 @@ public abstract class Unit : MonoBehaviour
 {
     public void Start() {
         SetUpHPBar();
+        turnHandler = GameObject.Find("TurnSystem").GetComponent<TurnHandler>();
+        cursor = GameObject.Find("Cursor").GetComponent<BattleCursor>();
     }
     public bool activeUnit = false;
 
@@ -46,8 +48,8 @@ public abstract class Unit : MonoBehaviour
 
     [Header("Dependancies")]
     [SerializeField] Slider hpBar;
-    [SerializeField] protected TurnHandler turnHandler;
-    [SerializeField] protected BattleCursor cursor;
+    protected TurnHandler turnHandler;
+    protected BattleCursor cursor;
 
     int totalDamage = 0;
 
@@ -83,7 +85,7 @@ public abstract class Unit : MonoBehaviour
 
     public void Attack(Unit target){
         moves[0].Trigger(this,target);
-        target.ReceiveDamage(baseAttack + 1);
+        //target.ReceiveDamage(baseAttack + 1);
         // StartCoroutine(DelayBetweenTurns());
         NextTurn();
     }
