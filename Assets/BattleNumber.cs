@@ -5,8 +5,8 @@ using TMPro;
 
 public class BattleNumber : MonoBehaviour
 {
-    public void Set(int dmg, bool crit){
-        transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText(dmg + (crit ? "!" : ""));
+    public void Set(string txt, bool crit){
+        transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText(txt + (crit ? "!" : ""));
     }
 
     public void DestroyMe(){

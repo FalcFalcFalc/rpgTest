@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class BattleCursor : MonoBehaviour
 {
+
+    public static BattleCursor current;
+    void Awake() {
+        current = this;
+    } 
+    
     public Unit selected;
     int idSelectionAnim = 0;
     public TurnHandler ts;
@@ -11,7 +17,7 @@ public class BattleCursor : MonoBehaviour
     public void SelectNewUnit(Unit target){
         LeanTween.cancel(gameObject,idSelectionAnim);
         
-        idSelectionAnim = LeanTween.move(gameObject, target.transform.position, .5f).setEaseInOutBack().id;
+        idSelectionAnim = LeanTween.move(gameObject, target.GetOriginalPosition(), .5f).setEaseInOutBack().id;
         selected = target;
     }
 
@@ -31,7 +37,14 @@ public class BattleCursor : MonoBehaviour
         if(ts.isPlayerActing()){
             ChangeColor(Color.cyan);
             if(Input.GetMouseButtonUp(0) && selected != null){
-                ts.GetCurrentUnit().Attack(selected);
+                Unit caster = ts.GetCurrentUnit();
+                if(selected.playable && caster.hasHealingMoves){
+                    ts.GetCurrentUnit().Heal(selected);
+                }
+                else if(caster.hasAttackMoves)
+                {
+                    caster.Attack(selected);
+                }
                 Bump();
                 selected = null;
             }

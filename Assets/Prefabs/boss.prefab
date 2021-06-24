@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2657215905133449755}
   - component: {fileID: 2657215905133449754}
   - component: {fileID: 2657215905133449757}
-  - component: {fileID: 2657215905133449756}
   - component: {fileID: 2657215905133449753}
   m_Layer: 0
   m_Name: boss
@@ -104,37 +103,11 @@ MonoBehaviour:
   baseDefense: 2
   baseAgility: 0
   maxHp: 240
-  moves:
+  attackMoves:
   - {fileID: 11400000, guid: 7203325419071634d9c96b6db5ddabbc, type: 2}
+  healMoves: []
+  perks: []
   hpBar: {fileID: 2657215906648942066}
-  turnHandler: {fileID: 0}
-  cursor: {fileID: 0}
---- !u!61 &2657215905133449756
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2657215905133449758}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 8, y: 8}
-    newSize: {x: 0.2, y: 0.2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 8, y: 8}
-  m_EdgeRadius: 0
 --- !u!61 &2657215905133449753
 BoxCollider2D:
   m_ObjectHideFlags: 0

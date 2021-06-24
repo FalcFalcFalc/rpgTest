@@ -185,7 +185,6 @@ GameObject:
   - component: {fileID: 7047338906346997090}
   - component: {fileID: 7047338906346997091}
   - component: {fileID: 7047338906346997092}
-  - component: {fileID: 7047338906346997093}
   - component: {fileID: 7047338906346997088}
   m_Layer: 0
   m_Name: dummi
@@ -251,7 +250,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e7b01f584ea5e2c4387bc13e9ce86842, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.2, y: 0.2}
@@ -278,37 +277,11 @@ MonoBehaviour:
   baseDefense: 0
   baseAgility: 5
   maxHp: 100
-  moves:
+  attackMoves:
   - {fileID: 11400000, guid: 1dc02505e0872c241923eb9031ada9fd, type: 2}
+  healMoves: []
+  perks: []
   hpBar: {fileID: 7047338907061908107}
-  turnHandler: {fileID: 0}
-  cursor: {fileID: 0}
---- !u!61 &7047338906346997093
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7047338906346997095}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 8, y: 8}
-    newSize: {x: 0.2, y: 0.2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 8, y: 8}
-  m_EdgeRadius: 0
 --- !u!61 &7047338906346997088
 BoxCollider2D:
   m_ObjectHideFlags: 0

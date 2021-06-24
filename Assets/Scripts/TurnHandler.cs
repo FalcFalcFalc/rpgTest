@@ -1,10 +1,24 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class TurnHandler : MonoBehaviour
 {
-    [SerializeField] List<Unit> units;
+    public static TurnHandler current;
+    void Awake() {
+        current = this;
+    } 
+
+    [Serializable]
+    private class Iniciativa{
+        public Unit who;
+        [Range(1,5)]
+        public int acc = 1;
+        [HideInInspector]
+        public int currentAcc;
+    }
+    [SerializeField] List<Iniciativa> units;
 
     [SerializeField] RectTransform winScreen;
     [SerializeField] RectTransform loseScreen;
@@ -15,15 +29,20 @@ public class TurnHandler : MonoBehaviour
     }
 
     private void Start() {
-        NextTurn();
+        foreach (Iniciativa item in units)
+        {
+            item.currentAcc = item.acc;
+        }
+        currentUnit++;
+        GetCurrentUnit().Activate();
     }
 
     public List<Enemigo> GetEnemigos(){
         List<Enemigo> retorno = new List<Enemigo>();
-        foreach (Unit item in units)
+        foreach (Iniciativa item in units)
         {
-            if(!item.playable){
-                retorno.Add(item.GetComponent<Enemigo>());
+            if(!item.who.playable){
+                retorno.Add(item.who.GetComponent<Enemigo>());
             }
         }
         return retorno;
@@ -31,10 +50,10 @@ public class TurnHandler : MonoBehaviour
 
     public List<Player> GetPlayer(){
         List<Player> retorno = new List<Player>();
-        foreach (Unit item in units)
+        foreach (Iniciativa item in units)
         {
-            if(item.playable){
-                retorno.Add(item.GetComponent<Player>());
+            if(item.who.playable){
+                retorno.Add(item.who.GetComponent<Player>());
             }
         }
         return retorno;
@@ -46,20 +65,24 @@ public class TurnHandler : MonoBehaviour
 
     int currentUnit = -1;
     public Unit GetCurrentUnit(){
-        print(units.Count + " y " + currentUnit);
-
         if(currentUnit >= units.Count){
             currentUnit = 0;
-            print("Fuimos a 0: " + units.Count + " y " + currentUnit);
         }
 
+        return units[currentUnit].who;
+    }
 
-        return units[currentUnit];
+    Iniciativa GetInitiative(Unit whose){
+        foreach (Iniciativa item in units)
+        {
+            if(item.who == whose) return item; 
+        }
+        return null;
     }
     
     public void NextTurn(){
         if(died != null){        
-            units.Remove(died);
+            units.Remove(GetInitiative(died));
             died = null;
         }
 
@@ -77,7 +100,12 @@ public class TurnHandler : MonoBehaviour
         }
         else
         {
-            currentUnit++;
+            bool newUnit = --units[currentUnit].currentAcc == 0;
+            if(newUnit){
+                units[currentUnit].currentAcc = units[currentUnit].acc;
+                currentUnit++;
+            }
+        
             playerActing = GetCurrentUnit().playable;
             float delay = .1f;
             if(lastUnitWasPlayer && !playerActing){

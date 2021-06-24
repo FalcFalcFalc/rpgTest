@@ -19,7 +19,7 @@ public class BasicAttack : Ability
     }
 
     protected virtual void OnCritical(){
-        CameraHandler.ScreenShake(3,.5f);
+        CameraHandler.ScreenShake(2,.25f);
     }
 
     void Attack(Unit caster, Unit target){
@@ -27,10 +27,10 @@ public class BasicAttack : Ability
 
         ModifyDamage(ref damage, target);
 
-        bool didDodge = Random.Range(0,100) <= target.GetAgility();
+        bool didDodge = target.doesDodge();
         
         if(!didDodge){
-            bool isCrit = Random.Range(0,100) <= critChance;
+            bool isCrit = caster.doesCrit(critChance);
 
             if(isCrit){
                 OnCritical();
