@@ -23,11 +23,11 @@ public class BasicAttack : Ability
     }
 
     void Attack(Unit caster, Unit target){
-        float damage = caster.GetAttack() * atkMultiplier + baseDamage;
+        float damage = caster.GetAttack * atkMultiplier + baseDamage;
 
         ModifyDamage(ref damage, target);
 
-        bool didDodge = target.doesDodge();
+        bool didDodge = target.doesDodge(caster);
         
         if(!didDodge){
             bool isCrit = caster.doesCrit(critChance);
@@ -39,13 +39,7 @@ public class BasicAttack : Ability
             int netDamage = target.ReceiveDamage(Mathf.RoundToInt(damage));
 
             PlayParticlesOnTarget(target);
-            if(caster.playable){
-                PingNumberOnTarget(netDamage,isCrit,target);
-            }
-        }
-        else if(caster.playable){
-            LeanTween.cancel(target.gameObject);
-            LeanTween.move(target.gameObject, Vector3.left * .25f, .75f).setEasePunch();
+            PingNumberOnTarget(netDamage.ToString(),isCrit,target);
         }
         
 

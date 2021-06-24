@@ -14,7 +14,7 @@ public class Healing : Ability
 
     void Heal(Unit caster, Unit target){
         PlayParticlesOnTarget(target);
-        PingNumberOnTarget(caster.GetInteligence + baseHealing,false,target);
+        PingNumberOnTarget(caster.GetInteligence.ToString() + baseHealing,false,target);
         target.ReceiveHealing(caster.GetInteligence + baseHealing);
     }
 

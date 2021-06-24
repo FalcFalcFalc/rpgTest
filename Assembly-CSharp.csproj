@@ -37,8 +37,10 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\BattleNumber.cs" />
+     <Compile Include="Assets\Scripts\Scriptables\Pasive.cs" />
      <Compile Include="Assets\Scripts\BattleCursor.cs" />
      <Compile Include="Assets\Scripts\Scriptables\AttackWounds.cs" />
+     <Compile Include="Assets\Scripts\Scriptables\Regenerate.cs" />
      <Compile Include="Assets\Scripts\Scriptables\Healing.cs" />
      <Compile Include="Assets\LeanTween\Framework\LTSeq.cs" />
      <Compile Include="Assets\LeanTween\Framework\LeanSmooth.cs" />
@@ -51,14 +53,13 @@
      <Compile Include="Assets\Scripts\Scriptables\Ability.cs" />
      <Compile Include="Assets\Background.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
+     <Compile Include="Assets\Scripts\Scriptables\Counter.cs" />
      <Compile Include="Assets\Scripts\Unit.cs" />
      <Compile Include="Assets\LeanTween\Framework\LeanTweenExt.cs" />
      <Compile Include="Assets\LeanTween\Framework\LTDescrOptional.cs" />
      <Compile Include="Assets\CameraHandler.cs" />
      <Compile Include="Assets\LeanTween\Framework\LTDescr.cs" />
      <Compile Include="Assets\Scripts\ParticleHandler.cs" />
-     <Compile Include="Assets\Scripts\Scriptables\Pasive.cs" />
-     <Compile Include="Assets\Scripts\Scriptables\Regenerate.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

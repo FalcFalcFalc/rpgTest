@@ -18,9 +18,13 @@ public abstract class Ability : ScriptableObject
     public abstract void Trigger(Unit caster, Unit target);
 
     protected void PlayParticlesOnTarget(Unit target){
-        Instantiate(particles, target.transform).GetComponent<ParticleSystem>().Play();
+        ParticleSystem inst = Instantiate(particles, target.transform);
+        inst.Play();
+        //inst.transform.parent = null;
     }
     protected void PingNumberOnTarget(string txt, bool critical, Unit target){
-        Instantiate(indicator, target.transform).GetComponent<BattleNumber>().Set(numb,critical);
+        BattleNumber inst = Instantiate(indicator, target.transform);
+        inst.Set(txt,critical);
+        //inst.transform.parent = null;
     }
 }

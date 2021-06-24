@@ -97,7 +97,6 @@ public abstract class Unit : MonoBehaviour
     public bool doesCrit(int value){
         bool retorno = UnityEngine.Random.Range(0,100) <= value;
         if(retorno){
-            print("Animacion de esquivar");
             LeanTween.move(gameObject, transform.position + Vector3.left * .25f, .75f).setEasePunch();
         }
 

@@ -14,7 +14,8 @@ public class Counter : Pasive
     }
 
     public override void Trigger(Unit caster, Unit target){
-        PingNumberOnTarget("DODGE",true,caster)
+        PlayParticlesOnTarget(caster);
+        PingNumberOnTarget("DODGE",true,caster);
         caster.Attack(target,false);
     }
 
