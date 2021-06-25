@@ -73,7 +73,7 @@ public abstract class Unit : MonoBehaviour
         }
         else
         {
-            Survived();
+            Survived(totalDamage);
         }
         return totalDamage;
     }
@@ -97,6 +97,7 @@ public abstract class Unit : MonoBehaviour
     public bool doesCrit(int value){
         bool retorno = UnityEngine.Random.Range(0,100) <= value;
         if(retorno){
+            CrititicalHit();
             LeanTween.move(gameObject, transform.position + Vector3.left * .25f, .75f).setEasePunch();
         }
 
@@ -124,14 +125,14 @@ public abstract class Unit : MonoBehaviour
     public List<Ability> healMoves;
     public List<Pasive> perks;
 
-    void OnEnable() {
+    protected void OnEnable() {
         foreach (Pasive item in perks)
         {
             item.Enable(this);
         }
     }
 
-    void OnDisable() {
+    protected void OnDisable() {
         foreach (Pasive item in perks)
         {
             item.Disable(this);
@@ -139,21 +140,31 @@ public abstract class Unit : MonoBehaviour
     }
 
     public event Action<Unit> onEvade;
-    public event Action onSurvive;
+    public event Action<int> onDamage;
+    public event Action<int> onSurvive;
     public event Action onHealed;
     public event Action onActivate;
     public event Action onDeactivate;
+    public event Action onCrit;
 
     protected void Evaded(Unit target){
         if(onEvade != null) onEvade(target);
     }
 
-    protected void Survived(){
-        if(onSurvive != null) onSurvive();
+    public void DealtDamage(int dmg){
+        if(onDamage != null) onDamage(dmg);
+    }
+
+    protected void Survived(int value){
+        if(onSurvive != null) onSurvive(value);
     }
 
     protected void Healed(){
         if(onHealed != null) onHealed();
+    }
+
+    protected void CrititicalHit(){
+        if(onCrit != null) onCrit();
     }
 
     public bool hasAttackMoves{

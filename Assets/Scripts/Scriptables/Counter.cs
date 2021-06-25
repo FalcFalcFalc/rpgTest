@@ -5,7 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Pasives/Counter")]
 public class Counter : Pasive
 {
-    int hpPercentage = 2;
     public override void Enable(Unit self){ //opa, existen las expresiones lambda en c#! wujú!
         self.onEvade += (target) => Trigger(self,target);
     }

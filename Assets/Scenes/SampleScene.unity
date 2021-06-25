@@ -1913,6 +1913,14 @@ PrefabInstance:
       propertyPath: turnHandler
       value: 
       objectReference: {fileID: 2109540009}
+    - target: {fileID: 7047338906346997092, guid: 686659de40cdd824a9a33721963bdfe2, type: 3}
+      propertyPath: perks.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7047338906346997092, guid: 686659de40cdd824a9a33721963bdfe2, type: 3}
+      propertyPath: perks.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: c5545ae66db1c2d49b7df3f9e9dba364, type: 2}
     - target: {fileID: 7047338906346997095, guid: 686659de40cdd824a9a33721963bdfe2, type: 3}
       propertyPath: m_Name
       value: bicho (1)
@@ -4281,13 +4289,14 @@ MonoBehaviour:
   baseAttack: 30
   baseInteligence: 20
   baseDefense: 1
-  baseAgility: 20
+  baseAgility: 50
   maxHp: 190
   attackMoves:
   - {fileID: 11400000, guid: 73bcb9c634545894498da3ba6642fc6c, type: 2}
   healMoves: []
   perks:
   - {fileID: 11400000, guid: d786b3e52975f484d931d23bf05ceead, type: 2}
+  - {fileID: 11400000, guid: c5545ae66db1c2d49b7df3f9e9dba364, type: 2}
   hpBar: {fileID: 419817053975479091}
 --- !u!224 &419817053828440820
 RectTransform:
@@ -4798,13 +4807,14 @@ MonoBehaviour:
   baseAttack: 27
   baseInteligence: 20
   baseDefense: 4
-  baseAgility: 10
+  baseAgility: 5
   maxHp: 250
   attackMoves:
   - {fileID: 11400000, guid: 7203325419071634d9c96b6db5ddabbc, type: 2}
   healMoves: []
   perks:
   - {fileID: 11400000, guid: 2aaf46a741728614aaa43ee52cffe207, type: 2}
+  - {fileID: 11400000, guid: 70ff183547613ca40a714d4186f2e9f2, type: 2}
   hpBar: {fileID: 7018363878559068277}
 --- !u!61 &7018363879237257115
 BoxCollider2D:
@@ -5131,6 +5141,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7047338906346997092, guid: 686659de40cdd824a9a33721963bdfe2, type: 3}
+      propertyPath: perks.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7047338906346997092, guid: 686659de40cdd824a9a33721963bdfe2, type: 3}
+      propertyPath: perks.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: c5545ae66db1c2d49b7df3f9e9dba364, type: 2}
     - target: {fileID: 7047338906346997095, guid: 686659de40cdd824a9a33721963bdfe2, type: 3}
       propertyPath: m_Name
       value: bicho

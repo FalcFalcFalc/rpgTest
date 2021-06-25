@@ -72,6 +72,10 @@ public class TurnHandler : MonoBehaviour
         return units[currentUnit].who;
     }
 
+    public void OneMore(Unit who){
+        GetInitiative(who).currentAcc++;
+    }
+
     Iniciativa GetInitiative(Unit whose){
         foreach (Iniciativa item in units)
         {

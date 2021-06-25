@@ -17,3 +17,4 @@ MonoBehaviour:
   image: {fileID: 0}
   particles: {fileID: 3688552946960053520, guid: 44984585ce2106040a4e1223788e3608, type: 3}
   indicator: {fileID: 1228602051802193864, guid: d0d0646fef1e22248a99d56820f380ee, type: 3}
+  hpPercentage: 2

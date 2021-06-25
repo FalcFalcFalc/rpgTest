@@ -5,10 +5,12 @@ using UnityEngine;
 public class Enemigo : Unit
 {
     void OnDisable() {
+        base.OnEnable();
         onActivate -= StartAI;
     }
 
     void OnEnable() {
+        base.OnEnable();
         onActivate += StartAI;
     }
 

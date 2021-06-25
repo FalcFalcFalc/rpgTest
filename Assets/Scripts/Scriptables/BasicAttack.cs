@@ -37,7 +37,7 @@ public class BasicAttack : Ability
                 damage *= critMultiplier;
             }
             int netDamage = target.ReceiveDamage(Mathf.RoundToInt(damage));
-
+            caster.DealtDamage(netDamage);
             PlayParticlesOnTarget(target);
             PingNumberOnTarget(netDamage.ToString(),isCrit,target);
         }

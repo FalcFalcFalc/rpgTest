@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Pasives/Regenerate")]
 public class Regenerate : Pasive
 {
-    int hpPercentage = 2;
+    [SerializeField] int hpPercentage = 2;
     public override void Enable(Unit self){ //opa, existen las expresiones lambda en c#! wujú!
         self.onDeactivate += () => Trigger(self,null);
     }
