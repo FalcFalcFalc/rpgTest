@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65ba6a8913314e44189a223ba2083710, type: 3}
+  m_Name: Curacion Basica
+  m_EditorClassIdentifier: 
+  abilityName: Heal
+  abilityDescription: Heal an ally your basic INT
+  image: {fileID: 0}
+  particles: {fileID: 3688552946960053520, guid: 44984585ce2106040a4e1223788e3608, type: 3}
+  indicator: {fileID: 1228602051802193864, guid: d0d0646fef1e22248a99d56820f380ee, type: 3}
+  intMultiplier: 1
+  baseHealing: 0

@@ -105,8 +105,9 @@ MonoBehaviour:
   maxHp: 240
   attackMoves:
   - {fileID: 11400000, guid: 7203325419071634d9c96b6db5ddabbc, type: 2}
-  healMoves: []
-  perks: []
+  supportMoves: []
+  perks:
+  - {fileID: 11400000, guid: 70ff183547613ca40a714d4186f2e9f2, type: 2}
   hpBar: {fileID: 2657215906648942066}
 --- !u!61 &2657215905133449753
 BoxCollider2D:
@@ -192,7 +193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7830189, g: 0.76316214, b: 0.35826808, a: 1}
+  m_Color: {r: 0.8745099, g: 0.4431373, b: 0.14901961, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

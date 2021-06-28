@@ -298,15 +298,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeUnit: 0
   baseAttack: 10
-  baseInteligence: 25
+  baseInteligence: 30
   baseDefense: 1
   baseAgility: 5
   maxHp: 120
   attackMoves:
-  - {fileID: 11400000, guid: 1dc02505e0872c241923eb9031ada9fd, type: 2}
-  healMoves:
-  - {fileID: 11400000, guid: 86db7616de19423439f2a3e0690848dc, type: 2}
-  perks: []
+  - {fileID: 11400000, guid: 86241e8d41390d64eb33c0957bc21858, type: 2}
+  supportMoves:
+  - {fileID: 11400000, guid: 3bbf3ca96729fea4e940d4eac540b8bf, type: 2}
+  perks:
+  - {fileID: 11400000, guid: d786b3e52975f484d931d23bf05ceead, type: 2}
   hpBar: {fileID: 1755805094321934622}
 --- !u!61 &1755805095000139509
 BoxCollider2D:
@@ -392,7 +393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7830189, g: 0.76316214, b: 0.35826808, a: 1}
+  m_Color: {r: 0.8745099, g: 0.4431373, b: 0.14901961, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

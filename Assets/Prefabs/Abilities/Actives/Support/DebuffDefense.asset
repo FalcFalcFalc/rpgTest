@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 340a59aa6a39eb144a4bddec7f39da7f, type: 3}
+  m_Name: DebuffDefense
+  m_EditorClassIdentifier: 
+  abilityName: Debuff Defense
+  abilityDescription: Reduces defense by 20%
+  image: {fileID: 0}
+  particles: {fileID: 386109128757194772, guid: 7d5cbfb4afc2c924ea1bef095cecf2ac, type: 3}
+  indicator: {fileID: 4123010125295191807, guid: 18ef3b853082a124889c2a572aef1bfb, type: 3}
+  statToBuff: 2
+  particleColor: {r: 0.5, g: 0, b: 1, a: 1}

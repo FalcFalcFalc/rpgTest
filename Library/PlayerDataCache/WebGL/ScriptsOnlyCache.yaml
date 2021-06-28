@@ -5,12 +5,19 @@ ScriptsOnlyBuild:
     - Background
     - BasicAttack
     - BattleCursor
+    - BattleLog
     - BattleNumber
+    - BuffAlly
     - CameraHandler
+    - Counter
+    - DebuffEnemy
     - Enemigo
-    - Healing
+    - HealAlly
+    - LifeSteal
+    - OneMoreOnCrit
     - ParticleHandler
     - Player
+    - Regenerate
     - TurnHandler
     Cinemachine.dll:
     - Cinemachine.CinemachineBasicMultiChannelPerlin
@@ -49,10 +56,12 @@ ScriptsOnlyBuild:
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
+    - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
     - UnityEngine.UI.Slider
+    - UnityEngine.UI.Text
   sceneClasses:
     Assets/Scenes/SampleScene.unity:
     - Class: 1
@@ -82,63 +91,81 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11824}
-    - Class: 114
       Script: {instanceID: 11826}
     - Class: 114
-      Script: {instanceID: 11956}
+      Script: {instanceID: 11828}
     - Class: 114
-      Script: {instanceID: 12112}
+      Script: {instanceID: 11958}
     - Class: 114
-      Script: {instanceID: 12250}
+      Script: {instanceID: 12116}
     - Class: 114
-      Script: {instanceID: 12532}
+      Script: {instanceID: 12144}
     - Class: 114
-      Script: {instanceID: 12592}
+      Script: {instanceID: 12192}
     - Class: 114
-      Script: {instanceID: 12906}
+      Script: {instanceID: 12256}
     - Class: 114
-      Script: {instanceID: 13016}
+      Script: {instanceID: 12538}
     - Class: 114
-      Script: {instanceID: 13082}
+      Script: {instanceID: 12544}
     - Class: 114
-      Script: {instanceID: 13504}
+      Script: {instanceID: 12914}
     - Class: 114
-      Script: {instanceID: 13528}
+      Script: {instanceID: 13024}
     - Class: 114
-      Script: {instanceID: 13692}
+      Script: {instanceID: 13090}
     - Class: 114
-      Script: {instanceID: 13886}
+      Script: {instanceID: 13512}
     - Class: 114
-      Script: {instanceID: 14020}
+      Script: {instanceID: 13536}
     - Class: 114
-      Script: {instanceID: 14082}
+      Script: {instanceID: 13700}
     - Class: 114
-      Script: {instanceID: 14304}
+      Script: {instanceID: 13750}
     - Class: 114
-      Script: {instanceID: 14326}
+      Script: {instanceID: 13892}
     - Class: 114
-      Script: {instanceID: 14378}
+      Script: {instanceID: 13896}
     - Class: 114
-      Script: {instanceID: 14406}
+      Script: {instanceID: 14030}
     - Class: 114
-      Script: {instanceID: 14696}
+      Script: {instanceID: 14092}
     - Class: 114
-      Script: {instanceID: 14722}
+      Script: {instanceID: 14314}
     - Class: 114
-      Script: {instanceID: 14810}
+      Script: {instanceID: 14336}
     - Class: 114
-      Script: {instanceID: 15126}
+      Script: {instanceID: 14388}
     - Class: 114
-      Script: {instanceID: 15296}
+      Script: {instanceID: 14416}
     - Class: 114
-      Script: {instanceID: 15432}
+      Script: {instanceID: 14706}
     - Class: 114
-      Script: {instanceID: 15490}
+      Script: {instanceID: 14732}
     - Class: 114
-      Script: {instanceID: 15514}
+      Script: {instanceID: 14820}
     - Class: 114
-      Script: {instanceID: 15622}
+      Script: {instanceID: 14828}
+    - Class: 114
+      Script: {instanceID: 15138}
+    - Class: 114
+      Script: {instanceID: 15308}
+    - Class: 114
+      Script: {instanceID: 15444}
+    - Class: 114
+      Script: {instanceID: 15502}
+    - Class: 114
+      Script: {instanceID: 15526}
+    - Class: 114
+      Script: {instanceID: 15634}
+    - Class: 114
+      Script: {instanceID: 17026}
+    - Class: 114
+      Script: {instanceID: 22198}
+    - Class: 114
+      Script: {instanceID: 22220}
+    - Class: 114
+      Script: {instanceID: 39462}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -230,7 +257,7 @@ ScriptsOnlyBuild:
     className: PlayerQuitHandler
   - hash:
       serializedVersion: 2
-      Hash: d5bf54cb36a2053a10d4b6469c4a082c
+      Hash: 4549fa84ccc8712cf0562173f0f19bd3
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BattleCursor
@@ -240,6 +267,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: GroupTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 42ea6d0e739709153ad6286e29d11058
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: LifeSteal
   - hash:
       serializedVersion: 2
       Hash: a5781dc71a671b1ad2b38de19f24b71f
@@ -368,10 +401,16 @@ ScriptsOnlyBuild:
     className: PhysicsRaycaster
   - hash:
       serializedVersion: 2
-      Hash: 1f87d9207858594d245a0e1739522ee9
+      Hash: 2a75c1c31a19c1bb6bf94bda4e22ffea
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: AttackWounds
+  - hash:
+      serializedVersion: 2
+      Hash: 894ddc7577515fc084525f967bc8c8c2
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Regenerate
   - hash:
       serializedVersion: 2
       Hash: bd3cf68c8964d3c66d1c43f4f98508c9
@@ -384,12 +423,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: AspectRatioFitter
-  - hash:
-      serializedVersion: 2
-      Hash: 1912e47a324d21f30ddb58c507b4a319
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Healing
   - hash:
       serializedVersion: 2
       Hash: 87cef3c82381dc586f6772c3e27561b6
@@ -548,7 +581,7 @@ ScriptsOnlyBuild:
     className: CinemachineComposer
   - hash:
       serializedVersion: 2
-      Hash: b350a043da15577cf7e3b9e366aa0be5
+      Hash: fb7b14b9d65c9429754154a8334b13bc
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Enemigo
@@ -596,6 +629,12 @@ ScriptsOnlyBuild:
     className: RemoteTestResultSender
   - hash:
       serializedVersion: 2
+      Hash: 688ada0cddd994a11782f68d17e6fb5e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: OneMoreOnCrit
+  - hash:
+      serializedVersion: 2
       Hash: 694d20920c0e41f567e119f7159a3644
     assemblyName: Cinemachine.dll
     namespaceName: Cinemachine
@@ -614,7 +653,7 @@ ScriptsOnlyBuild:
     className: Button
   - hash:
       serializedVersion: 2
-      Hash: 4ea14151cf1a6776eef852c55135f1a7
+      Hash: 02e20c1eb79ab98fb71028b16d2c43d8
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BasicAttack
@@ -632,7 +671,7 @@ ScriptsOnlyBuild:
     className: CinemachineTargetGroup
   - hash:
       serializedVersion: 2
-      Hash: 7ed5da26e8383ad193eeb73b193d5a1f
+      Hash: fc1ab4e9a723ccee6d4b70df06448340
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: TurnHandler
@@ -752,7 +791,7 @@ ScriptsOnlyBuild:
     className: CinemachineTouchInputMapper
   - hash:
       serializedVersion: 2
-      Hash: b35afe04d921bcdd27c6ea1f77a7c45d
+      Hash: 652afbd1a6a565ca05e95ff52a50641f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Background
@@ -806,7 +845,7 @@ ScriptsOnlyBuild:
     className: CinemachineVolumeSettings
   - hash:
       serializedVersion: 2
-      Hash: b350a043da15577cf7e3b9e366aa0be5
+      Hash: fb7b14b9d65c9429754154a8334b13bc
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Player
@@ -822,6 +861,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: GraphicRaycaster
+  - hash:
+      serializedVersion: 2
+      Hash: 688ada0cddd994a11782f68d17e6fb5e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Counter
   - hash:
       serializedVersion: 2
       Hash: 8e6ceabfd38a184413d69b7db56c89cc
@@ -1002,7 +1047,31 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ParticleHandler
+  - hash:
+      serializedVersion: 2
+      Hash: 157c451221bc75fbfd61037c4ce2ef19
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: HealAlly
+  - hash:
+      serializedVersion: 2
+      Hash: 1f566881f39fc48501a0a8a92e2bb1d4
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: BuffAlly
+  - hash:
+      serializedVersion: 2
+      Hash: 1f566881f39fc48501a0a8a92e2bb1d4
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DebuffEnemy
+  - hash:
+      serializedVersion: 2
+      Hash: 835d3ff3513b172da81c5e37cd74bc54
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: BattleLog
   platform: 20
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: C:/Users/juani/Documents/GitHub/rpgTest/Builds/23_6
+  playerPath: C:/Users/juani/Documents/GitHub/rpgTest/Builds/27_6

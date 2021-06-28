@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e2d4603e4012ce418f598ad90f5ffcb, type: 3}
+  m_Name: Ataque Sadico
+  m_EditorClassIdentifier: 
+  abilityName: Attack Wounds
+  abilityDescription: Wounded enemies receive more damage
+  image: {fileID: 0}
+  particles: {fileID: 6889370291284613428, guid: 74cb05de9fe150a44b6acecc8d0bf2e8, type: 3}
+  indicator: {fileID: 6667520244712726511, guid: 386e351239ba4c042adca7855efc79dc, type: 3}
+  baseDamage: 1
+  atkMultiplier: 0.9
+  hitModifier: 0
+  critChance: 10
+  critMultiplier: 1.65
+  missingHealthMultiplier: 1

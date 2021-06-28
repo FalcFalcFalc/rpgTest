@@ -5,15 +5,15 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637598468056478078
-    m_Hash: 468037555
+      ticks: 637601945020250191
+    m_Hash: 2360101437
   m_LockFileStatus:
     m_FilePath: C:/Users/juani/Documents/GitHub/rpgTest/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637598468078706564
+      ticks: 637602526341929876
     m_Hash: 2020036019
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
