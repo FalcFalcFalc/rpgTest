@@ -17,7 +17,6 @@ public class BattleLog : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     void LogMovement(float value){
         bg.localPosition = Vector3.right * value;
-        print(value + " " + bg.position.x);
     }
 
     public void OnPointerEnter(PointerEventData context) {
@@ -59,7 +58,7 @@ public class BattleLog : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         while(logsAwaiting.Count > 0){
             TextMeshProUGUI nuevo = logsAwaiting.Dequeue();
             logs.Enqueue(nuevo);
-            print(nuevo.text);
+            //print(nuevo.text);
             if (logs.Count > length){
                 Destroy(logs.Dequeue());
             }

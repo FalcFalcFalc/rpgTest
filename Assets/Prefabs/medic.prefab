@@ -211,6 +211,7 @@ GameObject:
   - component: {fileID: 1755805095000139510}
   - component: {fileID: 1755805095000139505}
   - component: {fileID: 1755805095000139509}
+  - component: {fileID: 3385891148614631586}
   m_Layer: 0
   m_Name: medic
   m_TagString: Untagged
@@ -299,8 +300,8 @@ MonoBehaviour:
   activeUnit: 0
   baseAttack: 10
   baseInteligence: 30
-  baseDefense: 1
-  baseAgility: 5
+  baseDefense: -10
+  baseAgility: 7
   maxHp: 120
   attackMoves:
   - {fileID: 11400000, guid: 86241e8d41390d64eb33c0957bc21858, type: 2}
@@ -309,6 +310,8 @@ MonoBehaviour:
   perks:
   - {fileID: 11400000, guid: d786b3e52975f484d931d23bf05ceead, type: 2}
   hpBar: {fileID: 1755805094321934622}
+  attackPriority: 0
+  supportPriority: 12
 --- !u!61 &1755805095000139509
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -335,6 +338,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 8, y: 8}
   m_EdgeRadius: 0
+--- !u!114 &3385891148614631586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755805095000139506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0936761ebacfdf64f8d9ee0d0bbd5055, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1755805095269551933
 GameObject:
   m_ObjectHideFlags: 0

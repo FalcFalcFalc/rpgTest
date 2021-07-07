@@ -11,4 +11,21 @@ public class Enum{
         DEF,
         DEX
     }
+
+    public enum SelectionPriority{
+        MostBuffed,
+        LeastBuffed,
+        MostATK,
+        MostINT,
+        MostDEX,
+        MostDEF,
+        MostHP,
+        LeastATK,
+        LeastINT,
+        LeastDEX,
+        LeastDEF,
+        LeastHP,
+        NeedsHealing,
+        Random
+    }
 }

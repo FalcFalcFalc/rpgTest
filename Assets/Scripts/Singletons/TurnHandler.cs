@@ -44,23 +44,23 @@ public class TurnHandler : MonoBehaviour
         GetCurrentUnit().Activate();
     }
 
-    public List<Enemigo> GetEnemigos(){
-        List<Enemigo> retorno = new List<Enemigo>();
+    public List<Unit> GetEnemigos(){
+        List<Unit> retorno = new List<Unit>();
         foreach (Iniciativa item in units)
         {
             if(!item.who.playable){
-                retorno.Add(item.who.GetComponent<Enemigo>());
+                retorno.Add(item.who);
             }
         }
         return retorno;
     }
 
-    public List<Player> GetPlayer(){
-        List<Player> retorno = new List<Player>();
+    public List<Unit> GetPlayer(){
+        List<Unit> retorno = new List<Unit>();
         foreach (Iniciativa item in units)
         {
             if(item.who.playable){
-                retorno.Add(item.who.GetComponent<Player>());
+                retorno.Add(item.who);
             }
         }
         return retorno;
