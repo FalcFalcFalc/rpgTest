@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: BuffDEX
   m_EditorClassIdentifier: 
   abilityName: Buff Agility
-  abilityDescription: Increases Agility by 20%
-  image: {fileID: 0}
+  abilityDescription: Increases DEX
+  image: {fileID: -433237392984927270, guid: 73147b2704ffe7141a227944f21c64d1, type: 3}
   particles: {fileID: 3286933334412244339, guid: f09b6ba77647f2b4a846312dc322b5f1, type: 3}
   indicator: {fileID: 1228602051802193864, guid: d0d0646fef1e22248a99d56820f380ee, type: 3}
   statToBuff: 3

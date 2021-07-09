@@ -9,7 +9,6 @@ public class Enemigo : Unit
 
     Unit SelectTarget(List<Unit> units, Enum.SelectionPriority priority){
         List<Unit> sortedUnits = units;
-        print(priority);
 
         switch(priority){
             case Enum.SelectionPriority.MostBuffed:
@@ -67,12 +66,12 @@ public class Enemigo : Unit
         }
     }
 
-    void OnDisable() {
+    new void OnDisable() {
         base.OnEnable();
         onActivate -= StartAI;
     }
 
-    void OnEnable() {
+    new void OnEnable() {
         base.OnEnable();
         onActivate += StartAI;
     }

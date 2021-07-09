@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: BuffATK
   m_EditorClassIdentifier: 
   abilityName: Buff Strength
-  abilityDescription: Increases the ATK Stat a 20%
-  image: {fileID: 0}
+  abilityDescription: Increases ATK
+  image: {fileID: 2059662151215272465, guid: 73147b2704ffe7141a227944f21c64d1, type: 3}
   particles: {fileID: 3286933334412244339, guid: f09b6ba77647f2b4a846312dc322b5f1, type: 3}
   indicator: {fileID: 6667520244712726511, guid: 386e351239ba4c042adca7855efc79dc, type: 3}
   statToBuff: 0

@@ -29,10 +29,10 @@ PlayerSettings:
   m_SplashScreenBackgroundPortraitAspect: 1
   m_SplashScreenBackgroundLandscapeUvs:
     serializedVersion: 2
-    x: 0
-    y: 0.6701031
-    width: 0.24710424
-    height: 0.32989687
+    x: 0.25096524
+    y: 0
+    width: 0.24710426
+    height: 0.3298969
   m_SplashScreenBackgroundPortraitUvs:
     serializedVersion: 2
     x: 0
@@ -534,7 +534,7 @@ PlayerSettings:
   ps4IncludedModules: []
   ps4attribVROutputEnabled: 0
   monoEnv: 
-  splashScreenBackgroundSourceLandscape: {fileID: -408327487947842520, guid: 2432834b66b0d0742a410f6717e8b8d9, type: 3}
+  splashScreenBackgroundSourceLandscape: {fileID: 8415597050737779641, guid: 2432834b66b0d0742a410f6717e8b8d9, type: 3}
   splashScreenBackgroundSourcePortrait: {fileID: 0}
   blurSplashScreenBackground: 1
   spritePackerPolicy: 

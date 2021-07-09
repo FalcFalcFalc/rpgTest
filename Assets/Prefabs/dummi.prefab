@@ -284,7 +284,7 @@ MonoBehaviour:
   perks:
   - {fileID: 11400000, guid: c5545ae66db1c2d49b7df3f9e9dba364, type: 2}
   hpBar: {fileID: 7047338907061908107}
-  attackPriority: 12
+  attackPriority: 13
   supportPriority: 11
 --- !u!61 &7047338906346997088
 BoxCollider2D:
