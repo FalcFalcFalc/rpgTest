@@ -33,6 +33,10 @@ public class TurnHandler : MonoBehaviour
     Unit died = null;
     public void RemoveUnitFromInitiative(Unit who){
         died = who;
+        if(who.playable)
+            Background.current.Accelerate();
+        else
+            Background.current.Decelerate();
     }
 
     private void Start() {

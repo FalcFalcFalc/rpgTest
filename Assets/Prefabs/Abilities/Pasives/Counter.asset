@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5e5e85ce91f7554bb2557bc0f4c3ed6, type: 3}
   m_Name: Counter
   m_EditorClassIdentifier: 
-  abilityName: Counter
-  abilityDescription: When it dodges an attack, user will counterattack
+  abilityName: Counterstrike
+  abilityDescription: When it dodges an attack, user will attempt to attack
   image: {fileID: 2059662151215272465, guid: 73147b2704ffe7141a227944f21c64d1, type: 3}
   particles: {fileID: 2463147252872687259, guid: d39204e195f17c146857c76ad32a5eaf, type: 3}
   indicator: {fileID: 4123010125295191807, guid: 18ef3b853082a124889c2a572aef1bfb, type: 3}

@@ -19,6 +19,6 @@ MonoBehaviour:
   indicator: {fileID: 6667520244712726511, guid: 386e351239ba4c042adca7855efc79dc, type: 3}
   baseDamage: 0
   atkMultiplier: 2
-  hitModifier: -70
-  critChance: 80
-  critMultiplier: 5
+  hitModifier: -30
+  critChance: 40
+  critMultiplier: 3

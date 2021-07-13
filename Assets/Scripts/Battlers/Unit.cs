@@ -21,7 +21,6 @@ public abstract class Unit : MonoBehaviour
         hpBar.value = currentHp;
         
         turnHandler = TurnHandler.current;
-        cursor = BattleCursor.current;
     }
 
     public bool activeUnit = false;
@@ -248,7 +247,6 @@ public abstract class Unit : MonoBehaviour
     [Header("Dependancies")]
     [SerializeField] Slider hpBar;
     protected TurnHandler turnHandler;
-    protected BattleCursor cursor;
 
     public void Activate(){
         activeUnit = true;
@@ -268,10 +266,6 @@ public abstract class Unit : MonoBehaviour
 
     public bool playable{
         get{ return GetComponent<Player>();}
-    }
-
-    private void OnMouseOver() {
-        if(turnHandler.isPlayerActing() && cursor.selected != this) cursor.SelectNewUnit(this);
     }
 
     int movement;

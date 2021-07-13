@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74cce3280a72db54dbfac9e69338f9ee, type: 3}
   m_Name: OneMore
   m_EditorClassIdentifier: 
-  abilityName: OneMore
+  abilityName: One More
   abilityDescription: On critical hit, unit acts again
   image: {fileID: 8288756809058990418, guid: 73147b2704ffe7141a227944f21c64d1, type: 3}
   particles: {fileID: 0}

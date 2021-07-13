@@ -5,11 +5,12 @@ using UnityEngine;
 public class Background : MonoBehaviour
 {
     public static Background current;
-    public float alcanceAbsoluto;
+    [SerializeField] float alcanceAbsoluto;
     float alc;
-    public float velocidad;
+    [SerializeField] float velocidad;
     Vector3 direccion;
-    public Sprite[] fondos;
+    [SerializeField] Sprite[] fondos;
+    [SerializeField] float tensionVelocityMultiplier = 1.66666f;
 
     void Awake() {
         current = this;
@@ -39,6 +40,14 @@ public class Background : MonoBehaviour
         if(transform.position.magnitude >= alc){
             transform.position = transform.position - direccion.normalized * alc;
         }
+    }
+
+    public void Accelerate(){
+        velocidad *= tensionVelocityMultiplier;
+    }
+
+    public void Decelerate(){
+        velocidad /= tensionVelocityMultiplier;
     }
 
 
