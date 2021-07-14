@@ -3,19 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class Enemigo : Unit
+public class NPC : Unit
 {
     [SerializeField] Enum.SelectionPriority attackPriority, supportPriority;
+    [SerializeField] bool enemy;
+
+    List<Unit> myEnemies{
+        get{return (enemy ? turnHandler.GetPlayer() : turnHandler.GetEnemigos());}
+    }
+
+    List<Unit> myAllies{
+        get{return (enemy ? turnHandler.GetEnemigos() : turnHandler.GetPlayer());}
+    }
+
+    public override bool playerParty(){
+        return !enemy;
+    }
 
     Unit SelectTarget(List<Unit> units, Enum.SelectionPriority priority){
         List<Unit> sortedUnits = units;
 
         switch(priority){
             case Enum.SelectionPriority.MostBuffed:
-                sortedUnits = units.OrderByDescending(input=>input.buffAgility+input.buffAttack+input.buffDefense+input.buffInteligence).ToList();
+                sortedUnits = units.OrderByDescending(input=>input.buffAgility+input.buffAttack+input.buffInteligence).ToList();
                 break;
             case Enum.SelectionPriority.LeastBuffed:
-                sortedUnits = units.OrderBy(input=>input.buffAgility+input.buffAttack+input.buffDefense+input.buffInteligence).ToList();
+                sortedUnits = units.OrderBy(input=>input.buffAgility+input.buffAttack+input.buffInteligence).ToList();
                 break;
             case Enum.SelectionPriority.MostATK:
                 sortedUnits = units.OrderByDescending(input=>input.getAttack).ToList();
@@ -25,9 +38,6 @@ public class Enemigo : Unit
                 break;
             case Enum.SelectionPriority.MostDEX:
                 sortedUnits = units.OrderByDescending(input=>input.getAgility).ToList();
-                break;
-            case Enum.SelectionPriority.MostDEF:
-                sortedUnits = units.OrderByDescending(input=>input.getDefense).ToList();
                 break;
             case Enum.SelectionPriority.MostHP:
                 sortedUnits = units.OrderByDescending(input=>input.GetCurrentHP).ToList();
@@ -40,9 +50,6 @@ public class Enemigo : Unit
                 break;
             case Enum.SelectionPriority.LeastDEX:
                 sortedUnits = units.OrderBy(input=>input.getAgility).ToList();
-                break;
-            case Enum.SelectionPriority.LeastDEF:
-                sortedUnits = units.OrderBy(input=>input.getDefense).ToList();
                 break;
             case Enum.SelectionPriority.LeastHP:
                 sortedUnits = units.OrderBy(input=>input.GetCurrentHP).ToList();
@@ -82,14 +89,14 @@ public class Enemigo : Unit
 
     IEnumerator ArtificialInteligence(){
         yield return new WaitForSeconds(turnHandler.duration);
-        Unit mostWoundedAlly = SelectTarget(turnHandler.GetEnemigos(), supportPriority),
-             attackTarget = SelectTarget(turnHandler.GetPlayer(), attackPriority);
+        Unit mostWoundedAlly = SelectTarget(myAllies, supportPriority),
+             attackTarget = SelectTarget(myEnemies, attackPriority);
 
         if(hasSupportMoves && mostWoundedAlly != null)
         {
             Support(mostWoundedAlly);
         }
-        else if(turnHandler.GetPlayer().Count > 0 && hasAttackMoves && attackTarget != null)
+        else if(myEnemies.Count > 0 && hasAttackMoves && attackTarget != null)
         {
             Attack(attackTarget);
         }

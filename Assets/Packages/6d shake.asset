@@ -12,68 +12,89 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7f59e54f2bfd184b9dd451a678d089b, type: 3}
   m_Name: 6d shake
   m_EditorClassIdentifier: 
-  m_Position:
+  PositionNoise:
   - X:
-      Amplitude: 0.5
       Frequency: 8.64
-    Y:
       Amplitude: 0.5
+      Constant: 0
+    Y:
       Frequency: 11.6
-    Z:
-      Amplitude: 0
-      Frequency: 0
-  - X:
-      Amplitude: -0.5
-      Frequency: 2
-    Y:
       Amplitude: 0.5
+      Constant: 0
+    Z:
+      Frequency: 0
+      Amplitude: 0
+      Constant: 0
+  - X:
+      Frequency: 2
+      Amplitude: -0.5
+      Constant: 0
+    Y:
       Frequency: 7.83
-    Z:
-      Amplitude: 0
-      Frequency: 0
-  - X:
-      Amplitude: -0.5
-      Frequency: 2.49
-    Y:
-      Amplitude: -0.5
-      Frequency: 18.87
-    Z:
-      Amplitude: 0
-      Frequency: 0
-  - X:
       Amplitude: 0.5
-      Frequency: 18.86
-    Y:
+      Constant: 0
+    Z:
+      Frequency: 0
+      Amplitude: 0
+      Constant: 0
+  - X:
+      Frequency: 2.49
       Amplitude: -0.5
+      Constant: 0
+    Y:
+      Frequency: 18.87
+      Amplitude: -0.5
+      Constant: 0
+    Z:
+      Frequency: 0
+      Amplitude: 0
+      Constant: 0
+  - X:
+      Frequency: 18.86
+      Amplitude: 0.5
+      Constant: 0
+    Y:
       Frequency: 15.21
+      Amplitude: -0.5
+      Constant: 0
     Z:
-      Amplitude: 0
       Frequency: 0
-  m_Orientation:
+      Amplitude: 0
+      Constant: 0
+  OrientationNoise:
   - X:
-      Amplitude: 0
       Frequency: 0
+      Amplitude: 0
+      Constant: 0
     Y:
-      Amplitude: 0
       Frequency: 0
+      Amplitude: 0
+      Constant: 0
     Z:
-      Amplitude: -2
       Frequency: 21.7
+      Amplitude: -2
+      Constant: 0
   - X:
-      Amplitude: 0
       Frequency: 0
+      Amplitude: 0
+      Constant: 0
     Y:
-      Amplitude: 0
       Frequency: 0
-    Z:
       Amplitude: 0
+      Constant: 0
+    Z:
       Frequency: 19.25
+      Amplitude: 0
+      Constant: 0
   - X:
-      Amplitude: 0
       Frequency: 0
+      Amplitude: 0
+      Constant: 0
     Y:
-      Amplitude: 0
       Frequency: 0
+      Amplitude: 0
+      Constant: 0
     Z:
-      Amplitude: 5
       Frequency: 2
+      Amplitude: 5
+      Constant: 0

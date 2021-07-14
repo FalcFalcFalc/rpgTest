@@ -24,7 +24,8 @@ public abstract class Ability : ScriptableObject
         //inst.transform.parent = null;
     }
     protected void PingNumberOnTarget(string txt, bool critical, Unit target){
-        BattleNumber inst = Instantiate(indicator, target.transform);
+        //BattleNumber inst = Instantiate(indicator, target.transform);
+        BattleNumber inst = Instantiate(indicator, target.GetOriginalPosition(), Quaternion.identity);
         inst.Set(txt,critical);
         //inst.transform.parent = null;
     }

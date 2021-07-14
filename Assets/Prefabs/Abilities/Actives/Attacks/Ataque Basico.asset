@@ -20,5 +20,5 @@ MonoBehaviour:
   baseDamage: 0
   atkMultiplier: 1
   hitModifier: 0
-  critChance: 20
+  critChance: 3
   critMultiplier: 1.25

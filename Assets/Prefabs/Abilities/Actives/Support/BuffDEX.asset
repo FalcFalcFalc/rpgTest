@@ -17,5 +17,6 @@ MonoBehaviour:
   image: {fileID: -433237392984927270, guid: 73147b2704ffe7141a227944f21c64d1, type: 3}
   particles: {fileID: 3286933334412244339, guid: f09b6ba77647f2b4a846312dc322b5f1, type: 3}
   indicator: {fileID: 1228602051802193864, guid: d0d0646fef1e22248a99d56820f380ee, type: 3}
-  statToBuff: 3
+  statToBuff: 2
+  strength: 1
   particleColor: {r: 0.75, g: 1, b: 0, a: 1}

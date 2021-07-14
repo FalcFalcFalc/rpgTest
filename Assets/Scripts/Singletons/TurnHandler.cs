@@ -33,7 +33,7 @@ public class TurnHandler : MonoBehaviour
     Unit died = null;
     public void RemoveUnitFromInitiative(Unit who){
         died = who;
-        if(who.playable)
+        if(who.playerParty())
             Background.current.Accelerate();
         else
             Background.current.Decelerate();
@@ -52,7 +52,7 @@ public class TurnHandler : MonoBehaviour
         List<Unit> retorno = new List<Unit>();
         foreach (Iniciativa item in units)
         {
-            if(!item.who.playable){
+            if(!item.who.playerParty()){
                 retorno.Add(item.who);
             }
         }
@@ -83,8 +83,16 @@ public class TurnHandler : MonoBehaviour
         return units[currentUnit].who;
     }
 
+    bool allowDeactivationEffects = true;
+
     public void OneMore(Unit who){
+        allowDeactivationEffects = true;
         GetInitiative(who).currentAcc++;
+    }
+
+    public void OneMore(){
+        allowDeactivationEffects = false;
+        units[currentUnit].currentAcc++;
     }
 
     Iniciativa GetInitiative(Unit whose){
@@ -101,9 +109,10 @@ public class TurnHandler : MonoBehaviour
             died = null;
         }
 
+        Unit lastUnit = GetCurrentUnit();
         bool lastUnitWasPlayer = false;
         if(currentUnit > -1) {
-            lastUnitWasPlayer = GetCurrentUnit().playable;
+            lastUnitWasPlayer = lastUnit.playable;
         }
 
         if(GetPlayer().Count == 0){
@@ -119,8 +128,17 @@ public class TurnHandler : MonoBehaviour
         {
             bool newUnit = --units[currentUnit].currentAcc == 0;
             if(newUnit){
+                lastUnit.Deactivate();
                 units[currentUnit].currentAcc = units[currentUnit].acc;
                 currentUnit++;
+            }
+            else if(allowDeactivationEffects)
+            {
+                lastUnit.Deactivate();
+            }
+            else
+            {
+                allowDeactivationEffects = true;
             }
         
             playerActing = GetCurrentUnit().playable;

@@ -18,4 +18,5 @@ MonoBehaviour:
   particles: {fileID: 3286933334412244339, guid: f09b6ba77647f2b4a846312dc322b5f1, type: 3}
   indicator: {fileID: 6667520244712726511, guid: 386e351239ba4c042adca7855efc79dc, type: 3}
   statToBuff: 0
+  strength: 1
   particleColor: {r: 1, g: 0.5, b: 0, a: 1}

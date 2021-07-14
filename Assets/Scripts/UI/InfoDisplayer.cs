@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class AbilityDispalyer : MonoBehaviour
+public class InfoDisplayer : MonoBehaviour
 {
     [SerializeField] GameObject imagePlaceholder;
-    public static AbilityDispalyer current;
+    public static InfoDisplayer current;
     List<TextMeshProUGUI> texts;
     RectTransform rectTransform;
 
@@ -33,6 +33,14 @@ public class AbilityDispalyer : MonoBehaviour
                 desc = description.abilityDescription;
 
         texts[0].SetText(name.ToString());
+        texts[1].SetText(desc.ToString());
+
+        gameObject.SetActive(true);
+    }
+
+    public void Show(string title, string desc){
+
+        texts[0].SetText(title.ToString());
         texts[1].SetText(desc.ToString());
 
         gameObject.SetActive(true);

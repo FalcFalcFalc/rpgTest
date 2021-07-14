@@ -25,7 +25,6 @@ public class UnitDisplayer : MonoBehaviour
 
         texts.Add(GameObject.Find("strTooltipField").GetComponent<TextMeshProUGUI>());
         texts.Add(GameObject.Find("dexTooltipField").GetComponent<TextMeshProUGUI>());
-        texts.Add(GameObject.Find("defTooltipField").GetComponent<TextMeshProUGUI>());
         texts.Add(GameObject.Find("intTooltipField").GetComponent<TextMeshProUGUI>());
         texts.Add(GameObject.Find("nameTooltipField").GetComponent<TextMeshProUGUI>());
 
@@ -39,24 +38,22 @@ public class UnitDisplayer : MonoBehaviour
 
         int str = stats.getAttack,
             dex = stats.getAgility,
-            def = stats.getDefense,
             intel = stats.getInteligence;
 
         texts[0].SetText(str.ToString());
         texts[1].SetText(dex.ToString());
-        texts[2].SetText(def.ToString());
-        texts[3].SetText(intel.ToString());
-        texts[4].SetText(stats.name);
+        texts[2].SetText(intel.ToString());
+        texts[3].SetText(stats.name);
 
-        foreach (Ability item in stats.attackMoves)
+        foreach (Ability item in stats.getAttackMoves())
         {
             AddAbility(item);
         }
-        foreach (Ability item in stats.supportMoves)
+        foreach (Ability item in stats.getSupportMoves())
         {
             AddAbility(item);
         }
-        foreach (Ability item in stats.perks)
+        foreach (Ability item in stats.getPerks())
         {
             AddAbility(item);
         }
@@ -65,7 +62,7 @@ public class UnitDisplayer : MonoBehaviour
     }
 
     void AddAbility(Ability obj){
-        AbilityDispalyTrigger ab = Instantiate(imagePlaceholder,lista).GetComponent<AbilityDispalyTrigger>();
+        InfoDisplayerTrigger ab = Instantiate(imagePlaceholder,lista).GetComponent<InfoDisplayerTrigger>();
         ab.SetAbility(obj);
     }
 

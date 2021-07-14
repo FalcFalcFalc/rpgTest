@@ -16,6 +16,11 @@ public abstract class Unit : MonoBehaviour
     }
 
     public void Start() {
+//        hpBar = transform.Find("Slider").GetComponent<Slider>();
+
+        CopyStats();
+        CopyAbilities();
+
         currentHp = maxHp;
         hpBar.maxValue = maxHp;
         hpBar.value = currentHp;
@@ -23,76 +28,108 @@ public abstract class Unit : MonoBehaviour
         turnHandler = TurnHandler.current;
     }
 
+    void CopyStats(){
+        baseAttack = statsAndAbilities.might;
+        baseAgility = statsAndAbilities.speed;
+        baseInteligence = statsAndAbilities.mind;
+
+        maxHp = statsAndAbilities.maxHp;
+        print(maxHp + " " + name);
+    }
+
+    void CopyAbilities(){
+        attackMoves = statsAndAbilities.atk;
+        supportMoves = statsAndAbilities.sup;
+        perks = statsAndAbilities.perk;
+        OnEnable();
+    }
+
     public bool activeUnit = false;
 
-    
+    [SerializeField] UnitStatsAndAbilities statsAndAbilities;
 
     [Header("Stats")]
-    [SerializeField] int baseAttack;
-    [SerializeField] int baseInteligence;
-    [SerializeField] int baseDefense;
-    [SerializeField] int baseAgility;
+    int baseAttack;
+    int baseInteligence;
+    int baseAgility;
 
     public int getAttack{
-        get{return Mathf.RoundToInt(baseAttack * buffAttack);}
+        get{return Mathf.Clamp(Mathf.RoundToInt(baseAttack + buffAttack),1,20);}
     }
     public int getInteligence{
-        get{return Mathf.RoundToInt(baseInteligence * buffInteligence);}
-    }
-    public int getDefense{
-        get{return Mathf.RoundToInt(baseDefense * buffDefense);}
+        get{return Mathf.Clamp(Mathf.RoundToInt(baseInteligence + buffInteligence),1,20);}
     }
     public int getAgility{
-        get{return Mathf.RoundToInt(baseAgility * buffAgility);}
+        get{return Mathf.Clamp(Mathf.RoundToInt(baseAgility + buffAgility),1,20);}
     }
 
-    float strengthOfBuffs = Mathf.Pow(2,.25f);
 
-    public float buffAttack { get; private set; } = 1;
-    public float buffInteligence { get; private set; } = 1;
-    public float buffDefense { get; private set; } = 1;
-    public float buffAgility { get; private set; } = 1;
+    public int buffAttack { get; private set; } = 0;
+    public int buffInteligence { get; private set; } = 0;
+    public int buffAgility { get; private set; } = 0;
+
+    int maxBuffAmount = 4;
+
+    public bool canBuff(Enum.Stat what){
+        int which = 0;
+        switch (what)
+        {
+            case Enum.Stat.ATK:
+                which = buffAttack;
+            break;
+            
+            case Enum.Stat.INT:
+                which = buffInteligence;
+            break;
+            
+            case Enum.Stat.DEX:
+                which = buffAgility;
+            break;
+        }
+        return Mathf.Abs(which) < maxBuffAmount;
+    } 
     
-    public void Buff(Enum.Stat what){
+    
+    public void Buff(Enum.Stat what, int strengthOfBuffs){
         switch (what)
         {
             case Enum.Stat.ATK:
-                buffAttack *= strengthOfBuffs;
-                break;
+                buffAttack += strengthOfBuffs;
+                buffAttack = Mathf.Clamp(buffAttack, -maxBuffAmount, maxBuffAmount);
+            break;
+            
             case Enum.Stat.INT:
-                buffInteligence *= strengthOfBuffs;
-                break;
-            case Enum.Stat.DEF:
-                buffDefense *= strengthOfBuffs;
-                break;
+                buffInteligence += strengthOfBuffs;
+                buffInteligence = Mathf.Clamp(buffInteligence, -maxBuffAmount, maxBuffAmount);
+            break;
+            
             case Enum.Stat.DEX:
-                buffAgility *= strengthOfBuffs;
-                break;
+                buffAgility += strengthOfBuffs;
+                buffAgility = Mathf.Clamp(buffAgility, -maxBuffAmount, maxBuffAmount);
+            break;
         }
-        BattleLog.current.AddLog(name + " got their " + what.ToString() + " increased.");
+
     }
 
-    public void Debuff(Enum.Stat what){
+    public void Debuff(Enum.Stat what, int strengthOfBuffs){
         switch (what)
         {
             case Enum.Stat.ATK:
-                buffAttack /= strengthOfBuffs;
+                buffAttack -= strengthOfBuffs;
+                buffAttack = Mathf.Clamp(buffAttack, -maxBuffAmount, maxBuffAmount);
                 break;
             case Enum.Stat.INT:
-                buffInteligence /= strengthOfBuffs;
-                break;
-            case Enum.Stat.DEF:
-                buffDefense /= strengthOfBuffs;
+                buffInteligence -= strengthOfBuffs;
+                buffInteligence = Mathf.Clamp(buffInteligence, -maxBuffAmount, maxBuffAmount);
                 break;
             case Enum.Stat.DEX:
-                buffAgility /= strengthOfBuffs;
+                buffAgility -= strengthOfBuffs;
+                buffAgility = Mathf.Clamp(buffAgility, -maxBuffAmount, maxBuffAmount);
                 break;
         }
-        
-        BattleLog.current.AddLog(name + " got their " + what.ToString() + " lowered.");
     }
 
-    [SerializeField] protected int maxHp;
+    protected int maxHp;
     protected int currentHp;  
     public int GetCurrentHP{
         get{return currentHp;}
@@ -105,11 +142,8 @@ public abstract class Unit : MonoBehaviour
     }
 
     public int ReceiveDamage(int value){
-        float totalDamage = 0;
-        
-        totalDamage = value * (1 - baseDefense/100f);
-        LeanTween.value(gameObject, currentHp, currentHp - totalDamage, .19f).setEaseOutBack().setOnUpdate(AnimateHPBar);
-        currentHp -= Mathf.RoundToInt(totalDamage);
+        LeanTween.value(gameObject, currentHp, currentHp -value, .19f).setEaseOutBack().setOnUpdate(AnimateHPBar);
+        currentHp -= Mathf.RoundToInt(value);
         
 
         if(currentHp <= 0){
@@ -119,9 +153,9 @@ public abstract class Unit : MonoBehaviour
         }
         else
         {
-            Survived(Mathf.RoundToInt(totalDamage));
+            Survived(Mathf.RoundToInt(value));
         }
-        return Mathf.RoundToInt(totalDamage);
+        return Mathf.RoundToInt(value);
     }
 
     public void ReceiveHealing(int value){
@@ -133,7 +167,7 @@ public abstract class Unit : MonoBehaviour
     }
 
     public bool doesDodge(int accuracy, Unit attacker){
-        bool retorno = UnityEngine.Random.Range(0,100) <= getAgility - accuracy;
+        bool retorno = UnityEngine.Random.Range(0,20) <= getAgility/2 - accuracy;
         if(retorno){
             BattleLog.current.AddLog(name + " dodged " + attacker.name + "'s attack.");
 
@@ -144,7 +178,7 @@ public abstract class Unit : MonoBehaviour
     }
 
     public bool doesCrit(int value){
-        bool retorno = UnityEngine.Random.Range(0,100) <= value;
+        bool retorno = UnityEngine.Random.Range(0,20) <= value;
         if(retorno){
             BattleLog.current.AddLog(name + " scored a critical hit.");
 
@@ -171,22 +205,34 @@ public abstract class Unit : MonoBehaviour
     }
 
     [Header("Abilities")]
-    public List<Ability> attackMoves;
-    public List<Ability> supportMoves;
-    public List<Pasive> perks;
+    List<Ability> attackMoves;
+    List<Support> supportMoves;
+    List<Pasive> perks;
+
+    public List<Ability> getAttackMoves(){
+        return attackMoves;
+    }
+    public List<Support> getSupportMoves(){
+        return supportMoves;
+    }
+    public List<Pasive> getPerks(){
+        return perks;
+    }
+
+    bool firstEnable = true;
 
     protected void OnEnable() {
-        foreach (Pasive item in perks)
-        {
-            item.Enable(this);
-        }
+        if(firstEnable) firstEnable = false;
+        else
+            foreach (Pasive item in perks)
+                item.Enable(this);
+        
     }
 
     protected void OnDisable() {
-        foreach (Pasive item in perks)
-        {
-            item.Disable(this);
-        }
+        if(perks.Count > 0)
+            foreach (Pasive item in perks)
+                item.Disable(this);
     }
 
     public event Action<Unit> onEvade;
@@ -225,8 +271,22 @@ public abstract class Unit : MonoBehaviour
         get {return (supportMoves.Count > 0);}
     }
 
+    public bool hasSecondaryAttackMoves{
+        get {return (attackMoves.Count > 1);}
+    }
+
+    public bool hasSecondarySupportMoves{
+        get {return (supportMoves.Count > 1);}
+    }
+
     public void Attack(Unit target){
         attackMoves[0].Trigger(this,target);
+
+        NextTurn();
+    }
+
+    public void AttackSecondary(Unit target){
+        attackMoves[1].Trigger(this,target);
 
         NextTurn();
     }
@@ -244,6 +304,12 @@ public abstract class Unit : MonoBehaviour
         NextTurn();
     }
 
+    public void SupportSecondary(Unit target){
+        supportMoves[1].Trigger(this,target);
+
+        NextTurn();
+    }
+
     [Header("Dependancies")]
     [SerializeField] Slider hpBar;
     protected TurnHandler turnHandler;
@@ -253,14 +319,14 @@ public abstract class Unit : MonoBehaviour
         StepUp();
         if(onActivate != null) onActivate();
     }
-    protected virtual void Deactivate(){
+
+    public virtual void Deactivate(){
         StepDown();
         if(onDeactivate != null) onDeactivate();
     }
 
     protected void NextTurn(){
         activeUnit = false;
-        Deactivate();
         turnHandler.NextTurn();
     }
 
@@ -268,11 +334,15 @@ public abstract class Unit : MonoBehaviour
         get{ return GetComponent<Player>();}
     }
 
+    public virtual bool playerParty(){
+        return playable;
+    }
+
     int movement;
 
     protected void StepUp(){
         LeanTween.cancel(movement);
-        movement = LeanTween.move(gameObject,ogPos + (playable ? -1 : 1) * 2 * Vector3.right,turnHandler.duration).setEaseOutBack().id;
+        movement = LeanTween.move(gameObject,ogPos + (playerParty() ? -1 : 1) * 2 * Vector3.right,turnHandler.duration).setEaseOutBack().id;
     }
 
     protected void StepDown(){

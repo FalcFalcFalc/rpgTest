@@ -266,7 +266,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -290,7 +290,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 4933759805310824734}
   m_HandleRect: {fileID: 0}
-  m_Direction: 0
+  m_Direction: 1
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
@@ -311,6 +311,7 @@ GameObject:
   - component: {fileID: 4933759806475400570}
   - component: {fileID: 4933759806475400569}
   - component: {fileID: 3020798921213825527}
+  - component: {fileID: 967983685}
   m_Layer: 0
   m_Name: Slender Dancing Chaman
   m_TagString: Untagged
@@ -346,19 +347,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeUnit: 0
-  baseAttack: 30
-  baseInteligence: 25
-  baseDefense: 15
-  baseAgility: 12
+  statsAndAbilities: {fileID: 11400000, guid: 6f920e9fa22499d4296396bd4b99cb0c, type: 2}
   maxHp: 150
-  attackMoves:
-  - {fileID: 11400000, guid: 86241e8d41390d64eb33c0957bc21858, type: 2}
-  supportMoves:
-  - {fileID: 11400000, guid: 3bbf3ca96729fea4e940d4eac540b8bf, type: 2}
-  perks:
-  - {fileID: 11400000, guid: d786b3e52975f484d931d23bf05ceead, type: 2}
-  - {fileID: 11400000, guid: c5545ae66db1c2d49b7df3f9e9dba364, type: 2}
-  hpBar: {fileID: 4933759805669705164}
 --- !u!212 &4933759806475400570
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -434,7 +424,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 9, y: 9}
   m_EdgeRadius: 0
 --- !u!114 &3020798921213825527
 MonoBehaviour:
@@ -446,6 +436,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0936761ebacfdf64f8d9ee0d0bbd5055, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &967983685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4933759806475400568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64787c7e3a8386d4f92c33ad88cf73d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4933759806717934955

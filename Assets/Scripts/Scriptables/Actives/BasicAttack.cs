@@ -9,10 +9,11 @@ public class BasicAttack : Ability
     public int baseDamage = 1;
     [Range(0,10)]
     public float atkMultiplier = 1;
+    [Range(-20,20)]
     public int hitModifier = 0;
-    [Range(0,100)]
+    [Range(0,20)]
     public int critChance = 5;
-    [Range(1.01f,10)]
+    [Range(1,10)]
     public float critMultiplier = 2;
 
     public override void Trigger(Unit caster, Unit target){

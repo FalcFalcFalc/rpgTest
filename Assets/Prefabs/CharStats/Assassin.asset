@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50ec7cf452e54fe4e8c1a80ddedb1182, type: 3}
+  m_Name: Assassin
+  m_EditorClassIdentifier: 
+  unitName: Ninja Mummy
+  might: 9
+  speed: 8
+  will: 4
+  mind: 5
+  atk:
+  - {fileID: 11400000, guid: 73bcb9c634545894498da3ba6642fc6c, type: 2}
+  sup:
+  - {fileID: 11400000, guid: 47d8e33f6be6da24db316738799e0fe8, type: 2}
+  perk:
+  - {fileID: 11400000, guid: d786b3e52975f484d931d23bf05ceead, type: 2}
+  randomPool: 0

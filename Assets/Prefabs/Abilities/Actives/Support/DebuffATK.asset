@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 340a59aa6a39eb144a4bddec7f39da7f, type: 3}
   m_Name: DebuffATK
   m_EditorClassIdentifier: 
-  abilityName: Debuff Strength
+  abilityName: Debuff Might
   abilityDescription: Reduces ATK
   image: {fileID: 313226899498049276, guid: 73147b2704ffe7141a227944f21c64d1, type: 3}
   particles: {fileID: 386109128757194772, guid: 7d5cbfb4afc2c924ea1bef095cecf2ac, type: 3}
   indicator: {fileID: 6667520244712726511, guid: 386e351239ba4c042adca7855efc79dc, type: 3}
   statToBuff: 0
+  strength: 1
   particleColor: {r: 1, g: 0.5, b: 0, a: 1}

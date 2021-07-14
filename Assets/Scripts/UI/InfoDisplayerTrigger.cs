@@ -5,28 +5,30 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 
-public class AbilityDispalyTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class InfoDisplayerTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    Ability desc;
+    [SerializeField] string title, description;
+    Ability desc = null;
     public void SetAbility(Ability input){
         desc = input;
         GetComponent<Image>().sprite = desc.image;
     }
 
     private void OnMouseEnter() {
-        AbilityDispalyer.current.Show(desc);
+        InfoDisplayer.current.Show(desc);
     }
 
     private void OnMouseExit() {
-        AbilityDispalyer.current.Hide();
+        InfoDisplayer.current.Hide();
     }
 
     public void OnPointerEnter(PointerEventData context) {
-        AbilityDispalyer.current.Show(desc);
+        if(desc != null) InfoDisplayer.current.Show(desc);
+        else InfoDisplayer.current.Show(title, description);
     }
 
     public void OnPointerExit(PointerEventData context) {
-        AbilityDispalyer.current.Hide();
+        InfoDisplayer.current.Hide();
     }
 
     private void OnMouseOver() {
@@ -37,6 +39,6 @@ public class AbilityDispalyTrigger : MonoBehaviour, IPointerEnterHandler, IPoint
 
     IEnumerator delayUpdateStats(){
         yield return new WaitForSeconds(0.06f);
-        AbilityDispalyer.current.Show(desc);
+        InfoDisplayer.current.Show(desc);
     }
 }

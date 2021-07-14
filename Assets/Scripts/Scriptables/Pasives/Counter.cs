@@ -15,7 +15,7 @@ public class Counter : Pasive
     public override void Trigger(Unit caster, Unit target){
         BattleLog.current.AddLog(caster.name + " is countering " + target.name + "'s attack.");
         PlayParticlesOnTarget(caster);
-        PingNumberOnTarget("DODGE",true,caster);
+        PingNumberOnTarget("DODGED",true,caster);
         caster.Attack(target,false);
     }
 

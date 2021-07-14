@@ -8,7 +8,6 @@ public class Enum{
     {
         ATK,
         INT,
-        DEF,
         DEX
     }
 
@@ -18,12 +17,10 @@ public class Enum{
         MostATK,
         MostINT,
         MostDEX,
-        MostDEF,
         MostHP,
         LeastATK,
         LeastINT,
         LeastDEX,
-        LeastDEF,
         LeastHP,
         NeedsHealing,
         Random

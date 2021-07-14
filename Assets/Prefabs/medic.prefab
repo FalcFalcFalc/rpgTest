@@ -212,6 +212,7 @@ GameObject:
   - component: {fileID: 1755805095000139505}
   - component: {fileID: 1755805095000139509}
   - component: {fileID: 3385891148614631586}
+  - component: {fileID: 2054053276}
   m_Layer: 0
   m_Name: medic
   m_TagString: Untagged
@@ -298,20 +299,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeUnit: 0
-  baseAttack: 10
-  baseInteligence: 30
-  baseDefense: -10
-  baseAgility: 7
+  statsAndAbilities: {fileID: 11400000, guid: 6f920e9fa22499d4296396bd4b99cb0c, type: 2}
   maxHp: 120
-  attackMoves:
-  - {fileID: 11400000, guid: 86241e8d41390d64eb33c0957bc21858, type: 2}
-  supportMoves:
-  - {fileID: 11400000, guid: 3bbf3ca96729fea4e940d4eac540b8bf, type: 2}
-  perks:
-  - {fileID: 11400000, guid: d786b3e52975f484d931d23bf05ceead, type: 2}
-  hpBar: {fileID: 1755805094321934622}
   attackPriority: 0
-  supportPriority: 12
+  supportPriority: 10
 --- !u!61 &1755805095000139509
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -336,7 +327,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 9, y: 9}
   m_EdgeRadius: 0
 --- !u!114 &3385891148614631586
 MonoBehaviour:
@@ -348,6 +339,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0936761ebacfdf64f8d9ee0d0bbd5055, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2054053276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755805095000139506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64787c7e3a8386d4f92c33ad88cf73d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1755805095269551933

@@ -20,7 +20,7 @@ public class Cursor : MonoBehaviour
     TurnHandler ts;
 
     public void Select(Unit target){
-        lerpOg = target.transform.position;
+        lerpOg = target.GetOriginalPosition();;
         lerpOg.z = Camera.main.nearClipPlane + 2;
 
         StopAnimations();
@@ -51,7 +51,7 @@ public class Cursor : MonoBehaviour
     }
 
     public void Bump(){
-        LeanTween.move(gameObject, transform.position + Vector3.up, .75f).setEase(LeanTweenType.punch);
+        LeanTween.move(gameObject, transform.position + 2*Vector3.up, .75f).setEase(LeanTweenType.punch);
     }
 
     private void Update() {
@@ -63,12 +63,21 @@ public class Cursor : MonoBehaviour
             if(ts.isPlayerActing() && Input.GetMouseButtonUp(0))
             {
                 Unit caster = ts.GetCurrentUnit();
-                if(selected.playable && caster.hasSupportMoves)
-                    ts.GetCurrentUnit().Support(selected);
-                else if(!selected.playable && caster.hasAttackMoves)
-                    caster.Attack(selected);
-                Bump();
-                //Deselect();
+                if(Input.GetMouseButtonUp(0)){
+                    if(selected.playerParty() && caster.hasSupportMoves)
+                        ts.GetCurrentUnit().Support(selected);
+                    else if(!selected.playerParty() && caster.hasAttackMoves)
+                        caster.Attack(selected);
+                    Bump();
+                }
+                if(Input.GetMouseButtonUp(1)){
+                    if(selected.playerParty() && caster.hasSecondarySupportMoves)
+                        ts.GetCurrentUnit().SupportSecondary(selected);
+                    else if(!selected.playerParty() && caster.hasSecondaryAttackMoves)
+                        caster.AttackSecondary(selected);
+                    Bump();
+                }
+                
             }
         }
         
