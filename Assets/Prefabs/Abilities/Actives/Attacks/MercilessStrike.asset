@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Merciless Strike
   abilityDescription: Strong but hard to hit
-  image: {fileID: -6615871895319479256, guid: 73147b2704ffe7141a227944f21c64d1, type: 3}
+  image: {fileID: 2059662151215272465, guid: 73147b2704ffe7141a227944f21c64d1, type: 3}
   particles: {fileID: 2463147252872687259, guid: d39204e195f17c146857c76ad32a5eaf, type: 3}
   indicator: {fileID: 6667520244712726511, guid: 386e351239ba4c042adca7855efc79dc, type: 3}
   baseDamage: 0

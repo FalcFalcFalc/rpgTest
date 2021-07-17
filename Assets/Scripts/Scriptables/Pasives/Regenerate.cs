@@ -14,7 +14,7 @@ public class Regenerate : Pasive
     }
 
     public override void Trigger(Unit caster, Unit target){
-        float howMuchToHeal = caster.GetMaxHP * hpPercentage / 100f;
+        float howMuchToHeal = caster.getMaxHP * hpPercentage / 100f;
         PlayParticlesOnTarget(caster);
         PingNumberOnTarget(Mathf.RoundToInt(howMuchToHeal).ToString(),false,caster);
         caster.ReceiveHealing(Mathf.RoundToInt(howMuchToHeal));

@@ -40,7 +40,7 @@ public class NPC : Unit
                 sortedUnits = units.OrderByDescending(input=>input.getAgility).ToList();
                 break;
             case Enum.SelectionPriority.MostHP:
-                sortedUnits = units.OrderByDescending(input=>input.GetCurrentHP).ToList();
+                sortedUnits = units.OrderByDescending(input=>input.getCurrentHP).ToList();
                 break;
             case Enum.SelectionPriority.LeastATK:
                 sortedUnits = units.OrderBy(input=>input.getAttack).ToList();
@@ -52,11 +52,11 @@ public class NPC : Unit
                 sortedUnits = units.OrderBy(input=>input.getAgility).ToList();
                 break;
             case Enum.SelectionPriority.LeastHP:
-                sortedUnits = units.OrderBy(input=>input.GetCurrentHP).ToList();
+                sortedUnits = units.OrderBy(input=>input.getCurrentHP).ToList();
                 break;
             case Enum.SelectionPriority.NeedsHealing:
-                sortedUnits = units.OrderBy(input=>input.GetCurrentHpPercentage).ToList();
-                while(sortedUnits.Count > 0 && sortedUnits[0].GetCurrentHpPercentage > .35f)
+                sortedUnits = units.OrderBy(input=>input.getCurrentHpPercentage).ToList();
+                while(sortedUnits.Count > 0 && sortedUnits[0].getCurrentHpPercentage > .35f)
                     sortedUnits.Remove(sortedUnits[0]);
                 break;
             case Enum.SelectionPriority.Random:

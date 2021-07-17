@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Brute
   m_EditorClassIdentifier: 
   unitName: Brute
-  might: 8
+  might: 11
   speed: 2
   will: 11
   mind: 4
@@ -23,4 +23,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4f43e1f7072d4c347b8fb47b12ecf883, type: 2}
   perk:
   - {fileID: 11400000, guid: 2aaf46a741728614aaa43ee52cffe207, type: 2}
+  - {fileID: 11400000, guid: b73fb18899cdc5d418a26994223eba0a, type: 2}
   randomPool: 0

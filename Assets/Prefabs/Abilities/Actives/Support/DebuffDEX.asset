@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Debuff Speed
   abilityDescription: Reduces DEX
-  image: {fileID: 2059662151215272465, guid: 73147b2704ffe7141a227944f21c64d1, type: 3}
+  image: {fileID: 2479111103841710252, guid: 73147b2704ffe7141a227944f21c64d1, type: 3}
   particles: {fileID: 386109128757194772, guid: 7d5cbfb4afc2c924ea1bef095cecf2ac, type: 3}
   indicator: {fileID: 4123010125295191807, guid: 18ef3b853082a124889c2a572aef1bfb, type: 3}
   statToBuff: 2
