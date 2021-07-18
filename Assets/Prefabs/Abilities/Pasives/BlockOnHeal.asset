@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: Defend on Heal
-  m_EditorClassIdentifier: Assembly-CSharp::StatusEffectOnHeal
-  abilityName: Defend on full hp
-  abilityDescription: When user is healed to full, it starts defending
+  m_Script: {fileID: 11500000, guid: 5253be006ef992d42aa4f6b857c1b9d4, type: 3}
+  m_Name: BlockOnHeal
+  m_EditorClassIdentifier: 
+  abilityName: Block on Heal
+  abilityDescription: Blocks most damage of the next attack after healing
   image: {fileID: -8229129414841467963, guid: 73147b2704ffe7141a227944f21c64d1, type: 3}
   particles: {fileID: 0}
   indicator: {fileID: 4123010125295191807, guid: 18ef3b853082a124889c2a572aef1bfb, type: 3}

@@ -15,12 +15,8 @@ public class StatusEffectOnHeal : Pasive
     }
 
     public override void Trigger(Unit caster, Unit target){
-        Debug.Log("intentando bloquear");
-        //if(caster.getCurrentHpPercentage == 1){
-            Debug.Log("Bloqueando");
-            BattleLog.current.AddLog(caster.name + " is now  " + effectToApply.description + ".");
-            PingNumberOnTarget("DEFENDING",false,caster);
-            caster.AddStatusEffect(effectToApply);
-        //}
+        BattleLog.current.AddLog(caster.name + " is now  " + effectToApply.description + ".");
+        PingNumberOnTarget("DEFENDING",false,caster);
+        caster.AddStatusEffect(effectToApply);
     }
 }

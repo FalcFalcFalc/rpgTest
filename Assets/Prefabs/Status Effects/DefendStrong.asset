@@ -12,8 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f758c6581a366134eb56308354b38b05, type: 3}
   m_Name: DefendStrong
   m_EditorClassIdentifier: 
+  abilityName: 
+  abilityDescription: 
+  image: {fileID: 0}
+  particles: {fileID: 0}
+  indicator: {fileID: 0}
   effectName: Block next Attack
   description: blocking next attack
   duration: -1
+  autoStops: 1
   damageReduction: 0.75
-  stopAfterHit: 1

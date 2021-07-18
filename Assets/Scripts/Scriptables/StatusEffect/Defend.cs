@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,16 +8,22 @@ public class Defend : StatusEffect {
 
     [Range(0,1)]
     [SerializeField] float damageReduction;
-    [SerializeField] bool stopAfterHit = false;
+    Action<int> desuscripcion;
 
     public override void Enable(Unit self){ 
+        desuscripcion = (noDamageValueToPass) => self.RemoveStatusEffect(this);;
         self.ModifyDamageMultiplier(1 - damageReduction, false);
-        if(stopAfterHit) self.onSurvive += (noDamageValueToPass) => self.RemoveStatusEffect(this);
+        if(autoStops) self.onSurvive += desuscripcion;
     }
+
+    public override void Trigger(Unit self, Unit target){
+        
+    }
+
     public override void Disable(Unit self){
-        self.ModifyDamageMultiplier(1 - damageReduction, true); //ESTO NO FUNCIONA
-        if(stopAfterHit) {
-            self.onSurvive -= (noDamageValueToPass) => Disable(self);
+        self.ModifyDamageMultiplier(1 - damageReduction, true);
+        if(autoStops) {
+            self.onSurvive -= desuscripcion;
         }
     } 
     

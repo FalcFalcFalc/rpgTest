@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class StatusEffect : ScriptableObject {
+public abstract class StatusEffect : Pasive {
     public string effectName, description;
     public int duration;
+    public bool autoStops = false;
 
-    public abstract void Enable(Unit self);
-    public abstract void Disable(Unit self);
+    public override abstract void Enable(Unit self);
+    public override abstract void Disable(Unit self);
 
 }

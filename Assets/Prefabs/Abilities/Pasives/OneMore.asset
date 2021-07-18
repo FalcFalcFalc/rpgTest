@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: One More
   abilityDescription: On critical hit, unit acts again
-  image: {fileID: 8288756809058990418, guid: 73147b2704ffe7141a227944f21c64d1, type: 3}
+  image: {fileID: -1247770499320001266, guid: 73147b2704ffe7141a227944f21c64d1, type: 3}
   particles: {fileID: 0}
   indicator: {fileID: 0}

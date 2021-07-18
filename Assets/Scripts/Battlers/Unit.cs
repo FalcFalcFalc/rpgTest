@@ -101,7 +101,7 @@ public abstract class Unit : MonoBehaviour
         ogPos = transform.position;
     }
     public void Start() {
-//        hpBar = transform.Find("Slider").GetComponent<Slider>();
+        //hpBar = transform.Find("Slider").GetComponent<Slider>();
 
         CopyStats();
         CopyAbilities();
@@ -118,13 +118,15 @@ public abstract class Unit : MonoBehaviour
         baseInteligence = statsAndAbilities.mind;
 
         maxHp = statsAndAbilities.maxHp;
-//        print(maxHp + " " + name);
+        //print(maxHp + " " + name);
         statusEffects = new List<StatusEffectCountdown>();
     }
     void CopyAbilities(){
         attackMoves = statsAndAbilities.atk;
         supportMoves = statsAndAbilities.sup;
-        perks = statsAndAbilities.perk;
+        perks = new List<Pasive>();
+        foreach (Pasive item in statsAndAbilities.perk)
+            perks.Add(item);
         OnEnable();
     }
 
@@ -132,7 +134,6 @@ public abstract class Unit : MonoBehaviour
 
     public float damageMultiplier = 1;
     public void ModifyDamageMultiplier(float value, bool restore){
-        print(value + " " + restore);
         if(!restore){
             damageMultiplier *= value;
         }
@@ -218,8 +219,7 @@ public abstract class Unit : MonoBehaviour
         if(firstEnable) firstEnable = false;
         else
             foreach (Pasive item in perks)
-                item.Enable(this);
-        
+                item.Enable(this); 
     }
     protected void OnDisable() {
         if(perks.Count > 0)
@@ -321,25 +321,35 @@ public abstract class Unit : MonoBehaviour
         return retorno;
     }
     public void TickDownEffects(){
-        Queue<StatusEffectCountdown> finishedStatusses = new Queue<StatusEffectCountdown>();
+        List<StatusEffectCountdown> finishedStatusses = new List<StatusEffectCountdown>();
         foreach (StatusEffectCountdown item in statusEffects)
         {
             if(item.Countdown())
-                finishedStatusses.Enqueue(item);
+                finishedStatusses.Add(item);
         }
         foreach (StatusEffectCountdown item in finishedStatusses)
         {
             statusEffects.Remove(item);
-            item.Disable(this); //FIJARSE ACA
+            if(!item.se.autoStops) item.Disable(this); //FIJARSE ACA
         }
     }
     public void RemoveStatusEffect(StatusEffect remove){
         int i = 0;
         StatusEffectCountdown eliminar = null;
-        while(i < statusEffects.Count && eliminar == null)
+        while(i < statusEffects.Count && eliminar == null){
             if(remove == statusEffects[i].se)
                 eliminar = statusEffects[i];
-        statusEffects.Remove(eliminar);
+            i++;
+        }
+        if(eliminar != null){
+            eliminar.Disable(this);
+            statusEffects.Remove(eliminar);
+        }
+        else if(perks.Contains(remove))
+        {
+            remove.Disable(this);
+            perks.Remove(remove);
+        }
     }
 
     [Header("Dependancies")]

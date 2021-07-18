@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Debuff Might
   abilityDescription: Reduces ATK
-  image: {fileID: 313226899498049276, guid: 73147b2704ffe7141a227944f21c64d1, type: 3}
+  image: {fileID: 7246396648102996040, guid: 73147b2704ffe7141a227944f21c64d1, type: 3}
   particles: {fileID: 386109128757194772, guid: 7d5cbfb4afc2c924ea1bef095cecf2ac, type: 3}
   indicator: {fileID: 6667520244712726511, guid: 386e351239ba4c042adca7855efc79dc, type: 3}
   statToBuff: 0

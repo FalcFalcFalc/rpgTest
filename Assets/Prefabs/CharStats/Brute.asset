@@ -23,5 +23,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4f43e1f7072d4c347b8fb47b12ecf883, type: 2}
   perk:
   - {fileID: 11400000, guid: 2aaf46a741728614aaa43ee52cffe207, type: 2}
-  - {fileID: 11400000, guid: b73fb18899cdc5d418a26994223eba0a, type: 2}
+  - {fileID: 11400000, guid: 10280c1bd441c5a4ba40ee7e6b03f172, type: 2}
+  - {fileID: 11400000, guid: aaaa38b8e3b688f49914d3c5c80ef264, type: 2}
   randomPool: 0
