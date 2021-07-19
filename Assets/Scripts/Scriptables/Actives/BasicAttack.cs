@@ -43,10 +43,12 @@ public class BasicAttack : Ability
             caster.DealtDamage(netDamage);
             PlayParticlesOnTarget(target);
             PingNumberOnTarget(netDamage.ToString(),isCrit,target);
+            OnHit(caster, target);
         }
         
 
     }
     protected virtual void ModifyDamage(ref float value, Unit target){}
+    protected virtual void OnHit(Unit caster, Unit target){}
 
 }

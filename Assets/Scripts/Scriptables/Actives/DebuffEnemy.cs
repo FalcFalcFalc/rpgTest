@@ -7,7 +7,6 @@ public class DebuffEnemy : Ability
 {
     [SerializeField] Enum.Stat statToBuff;
     [SerializeField] int strength;
-    [SerializeField] Color particleColor;
 
 
     public override void Trigger(Unit caster, Unit target){
@@ -15,9 +14,7 @@ public class DebuffEnemy : Ability
     }
 
     void Debuff(Unit caster, Unit target){
-        ParticleSystem inst = PlayParticlesOnTarget(target);
-        inst.startColor = particleColor;
-        inst.gameObject.transform.position = new Vector3(inst.transform.position.x, inst.transform.position.y +1, inst.transform.position.z);
+        PlayParticlesOnTarget(target, Vector3.up);
         target.Debuff(statToBuff,strength);
         PingNumberOnTarget("- "+statToBuff.ToString(),true,target);
     }

@@ -16,5 +16,6 @@ MonoBehaviour:
   abilityDescription: Blocks most damage of the next attack after healing
   image: {fileID: -8229129414841467963, guid: 73147b2704ffe7141a227944f21c64d1, type: 3}
   particles: {fileID: 0}
+  particleColor: {r: 1, g: 1, b: 1, a: 1}
   indicator: {fileID: 4123010125295191807, guid: 18ef3b853082a124889c2a572aef1bfb, type: 3}
   effectToApply: {fileID: 11400000, guid: aaaa38b8e3b688f49914d3c5c80ef264, type: 2}

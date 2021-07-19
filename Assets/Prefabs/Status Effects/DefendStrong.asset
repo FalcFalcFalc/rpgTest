@@ -12,13 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f758c6581a366134eb56308354b38b05, type: 3}
   m_Name: DefendStrong
   m_EditorClassIdentifier: 
-  abilityName: 
-  abilityDescription: 
-  image: {fileID: 0}
-  particles: {fileID: 0}
+  abilityName: Blocking
+  abilityDescription: Blocks next attack by 75%
+  image: {fileID: -1366307907764919121, guid: 73147b2704ffe7141a227944f21c64d1, type: 3}
+  particles: {fileID: 3286933334412244339, guid: f09b6ba77647f2b4a846312dc322b5f1, type: 3}
+  particleColor: {r: 1, g: 0.99999994, b: 0, a: 1}
   indicator: {fileID: 0}
   effectName: Block next Attack
   description: blocking next attack
   duration: -1
   autoStops: 1
+  icon: {fileID: 3677036436142360943, guid: cc2f1a8aeb6028f4f8b9bcd484e89ca6, type: 3}
+  iconOffset: {x: -1, y: 0, z: 0}
   damageReduction: 0.75

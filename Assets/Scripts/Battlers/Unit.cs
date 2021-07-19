@@ -152,6 +152,7 @@ public abstract class Unit : MonoBehaviour
         if(currentHp <= 0){
             turnHandler.RemoveUnitFromInitiative(this);
             BattleLog.current.AddLog(name + " died.");
+            OnDisable();
             StartCoroutine(AnimateDeath());
         }
         else
@@ -169,7 +170,7 @@ public abstract class Unit : MonoBehaviour
         }
     }
     public bool doesDodge(int accuracy, Unit attacker){
-        bool retorno = UnityEngine.Random.Range(0,20) <= getAgility/2 - accuracy;
+        bool retorno = FalcTools.RandomZeroToInt(20) <= getAgility/2 - accuracy;
         if(retorno){
             BattleLog.current.AddLog(name + " dodged " + attacker.name + "'s attack.");
 
@@ -179,7 +180,7 @@ public abstract class Unit : MonoBehaviour
         return retorno; 
     }
     public bool doesCrit(int value){
-        bool retorno = UnityEngine.Random.Range(0,20) <= value;
+        bool retorno = FalcTools.RandomZeroToInt(20) <= value;
         if(retorno){
             BattleLog.current.AddLog(name + " scored a critical hit.");
 
@@ -214,24 +215,23 @@ public abstract class Unit : MonoBehaviour
         if(onCrit != null) onCrit();
     }
 
-    bool firstEnable = true;
+    public bool firstEnable = true;
     protected void OnEnable() {
         if(firstEnable) firstEnable = false;
         else
             foreach (Pasive item in perks)
-                item.Enable(this); 
+                item.Enable(this);
     }
     protected void OnDisable() {
-        if(perks.Count > 0)
-            foreach (Pasive item in perks)
-                item.Disable(this);
+        foreach (Pasive item in perks)
+            item.Disable(this);
     }
 
     //ACTIONS
     [Header("Abilities")]
-    List<Ability> attackMoves;
-    List<Support> supportMoves;
-    List<Pasive> perks;
+    public List<Ability> attackMoves;
+    public List<Support> supportMoves;
+    public List<Pasive> perks;
 
     public List<Ability> getAttackMoves(){
         return attackMoves;
@@ -305,50 +305,66 @@ public abstract class Unit : MonoBehaviour
     //STATUS EFFECTS
     [SerializeField] List<StatusEffectCountdown> statusEffects;
     public void AddStatusEffect(StatusEffect newStatus){
-        if(!AlreadyAffected(newStatus)){
+        StatusEffectCountdown referencia = FindEffect(newStatus);
+        if(referencia == null){
             statusEffects.Add(new StatusEffectCountdown(newStatus));
-            newStatus.Enable(this);
+            FindEffect(newStatus).Enable(this);
         }
+        else
+        {
+            ExtendDuration(referencia);
+        }
+    }
+
+    StatusEffectCountdown FindEffect(StatusEffect status){
+        int i = 0;
+        if(statusEffects.Count > 0)
+        {
+            while(i < statusEffects.Count && status != statusEffects[i].se){
+                i++;
+            }
+            if(status == statusEffects[i].se)
+                return statusEffects[i];
+        }
+        return null;
+    }
+
+    public void ExtendDuration(StatusEffectCountdown status){
+        status.countdown = status.se.duration;
     }
     public bool AlreadyAffected(StatusEffect which){
         bool retorno = false;
-        if(statusEffects.Count > 0){
-            int i = 0;
-            while(i < statusEffects.Count && !retorno){
-                retorno = which == statusEffects[i].se;
-            }
-        }
+        retorno = FindEffect(which) != null;
         return retorno;
     }
     public void TickDownEffects(){
-        List<StatusEffectCountdown> finishedStatusses = new List<StatusEffectCountdown>();
-        foreach (StatusEffectCountdown item in statusEffects)
-        {
-            if(item.Countdown())
-                finishedStatusses.Add(item);
+        if(statusEffects.Count > 0){
+            print("hay efectos");
+            List<StatusEffectCountdown> finishedStatusses = new List<StatusEffectCountdown>();
+            print("creada lista");
+            foreach (StatusEffectCountdown item in statusEffects)
+                if(item.Countdown())
+                    finishedStatusses.Add(item);
+            print("efectos que finalizaron: " + finishedStatusses.Count);
+
+            foreach (StatusEffectCountdown item in finishedStatusses)
+            {
+                print("eliminando " + item);
+                if(!item.se.autoStops) RemoveStatusEffect(item);
+            }
         }
-        foreach (StatusEffectCountdown item in finishedStatusses)
-        {
-            statusEffects.Remove(item);
-            if(!item.se.autoStops) item.Disable(this); //FIJARSE ACA
-        }
+    }
+    public void RemoveStatusEffect(StatusEffectCountdown remove){
+        remove.Disable(this);
+        print("eliminando " + remove.se);
+        statusEffects.Remove(remove);
     }
     public void RemoveStatusEffect(StatusEffect remove){
         int i = 0;
-        StatusEffectCountdown eliminar = null;
-        while(i < statusEffects.Count && eliminar == null){
-            if(remove == statusEffects[i].se)
-                eliminar = statusEffects[i];
-            i++;
-        }
+        StatusEffectCountdown eliminar = FindEffect(remove);
         if(eliminar != null){
             eliminar.Disable(this);
             statusEffects.Remove(eliminar);
-        }
-        else if(perks.Contains(remove))
-        {
-            remove.Disable(this);
-            perks.Remove(remove);
         }
     }
 
@@ -367,10 +383,17 @@ public abstract class Unit : MonoBehaviour
         if(onActivate != null) onActivate();
     }
     public virtual void Deactivate(){
+        print("deshabilitando: " + name);
         StepDown();
         if(onDeactivate != null) onDeactivate();
+        TickDownEffects();
     }
     protected void NextTurn(){
+        StartCoroutine(nextTurnDelay());
+    }
+    
+    IEnumerator nextTurnDelay(){
+        yield return new WaitForSeconds(.3f);
         turnHandler.NextTurn();
     }
 

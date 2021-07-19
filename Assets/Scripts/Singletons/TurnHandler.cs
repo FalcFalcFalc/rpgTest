@@ -30,13 +30,14 @@ public class TurnHandler : MonoBehaviour
     [SerializeField] RectTransform loseScreen;
     [SerializeField] RectTransform restart;
 
-    Unit died = null;
+    Queue<Unit> died = new Queue<Unit>();
     public void RemoveUnitFromInitiative(Unit who){
-        died = who;
+        died.Enqueue(who);
         if(who.playerParty())
             Background.current.Accelerate();
         else
             Background.current.Decelerate();
+        KillEnqueuedUnits();
     }
 
     private void Start() {
@@ -63,7 +64,7 @@ public class TurnHandler : MonoBehaviour
         List<Unit> retorno = new List<Unit>();
         foreach (Iniciativa item in units)
         {
-            if(item.who.playable){
+            if(item.who.playerParty()){
                 retorno.Add(item.who);
             }
         }
@@ -78,8 +79,9 @@ public class TurnHandler : MonoBehaviour
     public Unit GetCurrentUnit(){
         if(currentUnit >= units.Count){
             currentUnit = 0;
+            print("ciclo terminado");
         }
-
+        print(currentUnit + ": " + units[currentUnit].who);
         return units[currentUnit].who;
     }
 
@@ -102,18 +104,14 @@ public class TurnHandler : MonoBehaviour
         }
         return null;
     }
-    
-    public void NextTurn(){
-        if(died != null){        
-            units.Remove(GetInitiative(died));
-            died = null;
-        }
 
-        Unit lastUnit = GetCurrentUnit();
-        bool lastUnitWasPlayer = false;
-        if(currentUnit > -1) {
-            lastUnitWasPlayer = lastUnit.playable;
+    void KillEnqueuedUnits(){
+        while(died.Count > 0){
+            units.Remove(GetInitiative(died.Dequeue()));
         }
+    }
+
+    void Update() {
 
         if(GetPlayer().Count == 0){
             loseScreen.gameObject.SetActive(true);
@@ -124,34 +122,39 @@ public class TurnHandler : MonoBehaviour
             winScreen.gameObject.SetActive(true);
             restart.gameObject.SetActive(true);
         }
-        else
-        {
-            bool newUnit = --units[currentUnit].currentAcc == 0;
-            if(newUnit){
-                lastUnit.Deactivate();
-                units[currentUnit].currentAcc = units[currentUnit].acc;
-                currentUnit++;
-            }
-            else if(allowDeactivationEffects)
-            {
-                lastUnit.Deactivate();
-            }
-            else
-            {
-                allowDeactivationEffects = true;
-            }
-        
-            playerActing = GetCurrentUnit().playable;
-            float delay = .2f;
-            if(lastUnitWasPlayer && !playerActing){
-                delay += .1f;
-            }
-            StartCoroutine(EndTurnDelay(delay));
+    }
+    
+    public void NextTurn(){
+        print("next turn");
+        Unit lastUnit = GetCurrentUnit();
+        bool lastUnitWasPlayer = false;
+        if(currentUnit > -1) {
+            lastUnitWasPlayer = lastUnit.playable;
         }
+        bool newUnit = --units[currentUnit].currentAcc == 0;
+        print("calculada proxima unidad: " + newUnit);
+        if(newUnit)
+        {
+            lastUnit.Deactivate();
+            print(currentUnit + " / " + units.Count);
+            units[currentUnit].currentAcc = units[currentUnit].acc;
+            print("desactivando unidad anterior");
+            currentUnit++;
+        }
+        else if(allowDeactivationEffects)
+            lastUnit.Deactivate();
+        else
+            allowDeactivationEffects = true;
+
+        playerActing = GetCurrentUnit().playable;
+        float delay = .2f;
+        //if(lastUnitWasPlayer && !playerActing) delay += .1f;
+        StartCoroutine(EndTurnDelay(delay));
     }
 
     IEnumerator EndTurnDelay(float time){
         yield return new WaitForSeconds(time);
+        print("activando");
         GetCurrentUnit().Activate();
     }
 

@@ -11,6 +11,8 @@ public abstract class Ability : ScriptableObject
     
     [Header("Visual FX")]
     public ParticleSystem particles;
+    [SerializeField] Color particleColor = Color.white;
+
     public BattleNumber indicator;
     [Header("Stats")] //in other classes this will make sense, since this is abstract
     int invis = 0;
@@ -20,8 +22,15 @@ public abstract class Ability : ScriptableObject
     protected ParticleSystem PlayParticlesOnTarget(Unit target){
         ParticleSystem inst = Instantiate(particles, target.transform);
         inst.Play();
+        inst.startColor = particleColor;
+
         return inst;
         //inst.transform.parent = null;
+    }
+    protected ParticleSystem PlayParticlesOnTarget(Unit target, Vector3 offset){
+        ParticleSystem inst = PlayParticlesOnTarget(target);
+        inst.gameObject.transform.position = inst.gameObject.transform.position + offset;
+        return inst;
     }
     protected void PingNumberOnTarget(string txt, bool critical, Unit target){
         //BattleNumber inst = Instantiate(indicator, target.transform);

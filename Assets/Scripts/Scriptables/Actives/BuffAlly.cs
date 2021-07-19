@@ -7,11 +7,10 @@ public class BuffAlly : Support
 {
     [SerializeField] Enum.Stat statToBuff;
     [SerializeField] int strength;
-    [SerializeField] Color particleColor;
 
     protected override void SupportAlly(Unit caster, Unit target){
-        if(target.canBuff(statToBuff)){
-            PlayParticlesOnTarget(target).startColor = particleColor;
+        if(target.canBuff(statToBuff))
+        {
             target.Buff(statToBuff, strength);
             PingNumberOnTarget("+"+statToBuff.ToString(),true,target);
         }
@@ -20,7 +19,5 @@ public class BuffAlly : Support
             PingNumberOnTarget("Can't buff",false,target);
             TurnHandler.current.OneMore();
         }
-
-        
     }
 }

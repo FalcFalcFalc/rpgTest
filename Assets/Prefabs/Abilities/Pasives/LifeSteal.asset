@@ -16,5 +16,6 @@ MonoBehaviour:
   abilityDescription: Heal 40% of the damage done
   image: {fileID: 313226899498049276, guid: 73147b2704ffe7141a227944f21c64d1, type: 3}
   particles: {fileID: 0}
+  particleColor: {r: 1, g: 1, b: 1, a: 1}
   indicator: {fileID: 1228602051802193864, guid: d0d0646fef1e22248a99d56820f380ee, type: 3}
   damagePercentage: 40

@@ -11,13 +11,16 @@ public class Defend : StatusEffect {
     Action<int> desuscripcion;
 
     public override void Enable(Unit self){ 
-        desuscripcion = (noDamageValueToPass) => self.RemoveStatusEffect(this);;
+        PlaceIcon(self);
+        //PlayParticlesOnTarget(self);
+        desuscripcion = (noDamageValueToPass) => Trigger(self, null);
         self.ModifyDamageMultiplier(1 - damageReduction, false);
         if(autoStops) self.onSurvive += desuscripcion;
     }
 
     public override void Trigger(Unit self, Unit target){
-        
+        self.RemoveStatusEffect(this);
+        Debug.Log("recibi daño, desuscribiendo");
     }
 
     public override void Disable(Unit self){
@@ -25,6 +28,7 @@ public class Defend : StatusEffect {
         if(autoStops) {
             self.onSurvive -= desuscripcion;
         }
+        DestroyIcon();
     } 
     
 }

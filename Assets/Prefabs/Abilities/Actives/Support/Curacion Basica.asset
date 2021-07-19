@@ -16,6 +16,7 @@ MonoBehaviour:
   abilityDescription: Heal an ally your basic INT
   image: {fileID: 4755947981307438103, guid: 73147b2704ffe7141a227944f21c64d1, type: 3}
   particles: {fileID: 3688552946960053520, guid: 44984585ce2106040a4e1223788e3608, type: 3}
+  particleColor: {r: 1, g: 1, b: 1, a: 1}
   indicator: {fileID: 1228602051802193864, guid: d0d0646fef1e22248a99d56820f380ee, type: 3}
   intMultiplier: 1
   baseHealing: 0
