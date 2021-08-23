@@ -12,12 +12,14 @@ public class Cursor : MonoBehaviour
     } 
 
     void Start() {
-        ts = TurnHandler.current;
+        //ts = TurnHandler.current;
+        pts = PressTurnSystem.current;
     }
     
     public Unit selected;
     int idSelectionAnim = 0;
     TurnHandler ts;
+    PressTurnSystem pts;
 
     public void Select(Unit target){
         lerpOg = target.GetOriginalPosition();;
@@ -55,29 +57,27 @@ public class Cursor : MonoBehaviour
     }
 
     private void Update() {
-        GetComponent<Animator>().SetBool("selecting",!(selected == null) && ts.isPlayerActing());
+        GetComponent<Animator>().SetBool("selecting",!(selected == null) && pts.alliesActive);
 
 
         if(selected != null)
         {
-            if(ts.isPlayerActing() && Input.GetMouseButtonUp(0))
+            if(pts.alliesActive && Input.GetMouseButtonUp(0))
             {
-                Unit caster = ts.GetCurrentUnit();
-                if(Input.GetMouseButtonUp(0)){
-                    if(selected.playerParty() && caster.hasSupportMoves)
-                        ts.GetCurrentUnit().Support(selected);
-                    else if(!selected.playerParty() && caster.hasAttackMoves)
-                        caster.Attack(selected);
+                Unit currentUnit = pts.currentUnit;
+                if(Input.GetMouseButtonUp(0) && currentUnit.isActive)
+                {
+                    if(selected.playerParty() && currentUnit.hasSupportMoves)
+                    {
+                        currentUnit.Support(selected);
+                    }
+                    else if(!selected.playerParty() && currentUnit.hasAttackMoves)
+                    {
+                        currentUnit.Attack(selected);
+                    }
+                    currentUnit.Deactivate();
                     Bump();
-                }
-                if(Input.GetMouseButtonUp(1)){
-                    if(selected.playerParty() && caster.hasSecondarySupportMoves)
-                        ts.GetCurrentUnit().SupportSecondary(selected);
-                    else if(!selected.playerParty() && caster.hasSecondaryAttackMoves)
-                        caster.AttackSecondary(selected);
-                    Bump();
-                }
-                
+                }                
             }
         }
         

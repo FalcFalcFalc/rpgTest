@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Bonk
   abilityDescription: Hit your enenmies in the head
+  playParticlesOnMiss: 0
   image: {fileID: -2456494433721020984, guid: 73147b2704ffe7141a227944f21c64d1, type: 3}
   particles: {fileID: 6889370291284613428, guid: 7c107c4157e783a4e8e224f2b6807b4b, type: 3}
-  indicator: {fileID: 6667520244712726511, guid: 386e351239ba4c042adca7855efc79dc, type: 3}
-  baseDamage: 2
-  atkMultiplier: 1.33
-  hitModifier: 0
-  critChance: 3
-  critMultiplier: 1.5
+  baseDamage: 0
+  atkMultiplier: 1.6
+  attackType: 0
+  hitModifier: -3
+  critChance: 8
+  critMultiplier: 2

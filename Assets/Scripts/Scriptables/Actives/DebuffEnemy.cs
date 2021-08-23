@@ -5,12 +5,12 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Abilities/Support/Debuff Enemy")]
 public class DebuffEnemy : Ability
 {
-    [SerializeField] Enum.Stat statToBuff;
+    [SerializeField] Keywords.Buff statToBuff;
     [SerializeField] int strength;
     [SerializeField] Color particleColor;
 
 
-    public override void Trigger(Unit caster, Unit target){
+    public override void Trigger(Unit caster, Unit target, bool dat){
         Debuff(caster, target);
     }
 
@@ -19,7 +19,7 @@ public class DebuffEnemy : Ability
         inst.startColor = particleColor;
         inst.gameObject.transform.position = new Vector3(inst.transform.position.x, inst.transform.position.y +1, inst.transform.position.z);
         target.Debuff(statToBuff,strength);
-        PingNumberOnTarget("- "+statToBuff.ToString(),true,target);
+        if(!caster.playable) PressTurnSystem.current.Next();
     }
 
 }

@@ -8,15 +8,15 @@ public class StatusEffectOnHeal : Pasive
     [Header("Status Effect on Heal")]
     [SerializeField] StatusEffect effectToApply;
     public override void Enable(Unit self){ //opa, existen las expresiones lambda en c#! wujú!
-        self.onHealed += () => Trigger(self,null);
+        self.onHealed += () => Trigger(self,null,false);
     }
     public override void Disable(Unit self){
-        self.onHealed -= () => Trigger(self,null);
+        self.onHealed -= () => Trigger(self,null,false);
     }
 
-    public override void Trigger(Unit caster, Unit target){
+    public override void Trigger(Unit caster, Unit target,bool dat){
         BattleLog.current.AddLog(caster.name + " is now  " + effectToApply.description + ".");
-        PingNumberOnTarget("DEFENDING",false,caster);
+        MiniTextGenerator.current.CreateText("DEFENDING",caster.transform);
         caster.AddStatusEffect(effectToApply);
     }
 }

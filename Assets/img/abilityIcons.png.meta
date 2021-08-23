@@ -25,7 +25,7 @@ TextureImporter:
     second: nuke
   - first:
       213: 8288756809058990418
-    second: 1+
+    second: storm
   - first:
       213: -1366307907764919121
     second: defenseUp
@@ -44,6 +44,12 @@ TextureImporter:
   - first:
       213: 2479111103841710252
     second: dexerityDown
+  - first:
+      213: -5016579150957062480
+    second: cyclone
+  - first:
+      213: -146929646725768942
+    second: fireball
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -423,6 +429,69 @@ TextureImporter:
       bones: []
       spriteID: ca0363ff962976220800000000000000
       internalID: 2479111103841710252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: storm
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 259bf81f664970370800000000000000
+      internalID: 8288756809058990418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cyclone
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b6d29757d7816ab0800000000000000
+      internalID: -5016579150957062480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fireball
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 219dfe7c34006fdf0800000000000000
+      internalID: -146929646725768942
       vertices: []
       indices: 
       edges: []

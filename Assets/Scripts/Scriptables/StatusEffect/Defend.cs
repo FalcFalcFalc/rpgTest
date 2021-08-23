@@ -8,15 +8,15 @@ public class Defend : StatusEffect {
 
     [Range(0,1)]
     [SerializeField] float damageReduction;
-    Action<int> desuscripcion;
+    Action<int,Keywords.Elements> desuscripcion;
 
     public override void Enable(Unit self){ 
-        desuscripcion = (noDamageValueToPass) => self.RemoveStatusEffect(this);;
+        desuscripcion = (noDamageValueToPass,type) => self.RemoveStatusEffect(this);;
         self.ModifyDamageMultiplier(1 - damageReduction, false);
         if(autoStops) self.onSurvive += desuscripcion;
     }
 
-    public override void Trigger(Unit self, Unit target){
+    public override void Trigger(Unit self, Unit target, bool dat){
         
     }
 

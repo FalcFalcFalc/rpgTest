@@ -9,6 +9,7 @@ public class BasicAttack : Ability
     public int baseDamage = 1;
     [Range(0,10)]
     public float atkMultiplier = 1;
+    public Keywords.Elements attackType;
     [Range(-20,20)]
     public int hitModifier = 0;
     [Range(0,20)]
@@ -16,16 +17,19 @@ public class BasicAttack : Ability
     [Range(1,10)]
     public float critMultiplier = 2;
 
-    public override void Trigger(Unit caster, Unit target){
+    public override void Trigger(Unit caster, Unit target, bool doesntAffectTurn){
         BattleLog.current.AddLog(caster.name + " used " + abilityName + " on " + target.name + ".");
-        Attack(caster, target);
+        if(!playParticlesOnMiss)
+            Attack(caster, target, doesntAffectTurn);
+        else
+            PlayParticlesOnTarget(target).GetComponent<PlayParticles>().trigger += () => Attack(caster, target, doesntAffectTurn);
     }
 
     protected virtual void OnCritical(){
         CameraHandler.ScreenShake(2,.25f);
     }
 
-    void Attack(Unit caster, Unit target){
+    void Attack(Unit caster, Unit target, bool doesntAffectTurn){
         float damage = caster.getAttack * atkMultiplier + baseDamage;
 
         ModifyDamage(ref damage, target);
@@ -39,10 +43,13 @@ public class BasicAttack : Ability
                 OnCritical();
                 damage *= critMultiplier;
             }
-            int netDamage = target.ReceiveDamage(Mathf.RoundToInt(damage));
-            caster.DealtDamage(netDamage);
-            PlayParticlesOnTarget(target);
-            PingNumberOnTarget(netDamage.ToString(),isCrit,target);
+            int netDamage = caster.DealDamage(target,damage,attackType, doesntAffectTurn);
+            if(!playParticlesOnMiss) PlayParticlesOnTarget(target);
+            //MiniTextGenerator.current.CreateText(netDamage.ToString(),caster.transform,attackType);
+        }
+        else
+        {
+            PressTurnSystem.current.Next(false);
         }
         
 

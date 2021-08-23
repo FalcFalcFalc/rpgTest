@@ -6,17 +6,17 @@ using UnityEngine;
 public class Counter : Pasive
 {
     public override void Enable(Unit self){ //opa, existen las expresiones lambda en c#! wujú!
-        self.onEvade += (target) => Trigger(self,target);
+        self.onEvade += (target) => Trigger(self,target,false);
     }
     public override void Disable(Unit self){
-        self.onEvade -= (target) => Trigger(self,target);
+        self.onEvade -= (target) => Trigger(self,target,false);
     }
 
-    public override void Trigger(Unit caster, Unit target){
+    public override void Trigger(Unit caster, Unit target, bool dat){
         BattleLog.current.AddLog(caster.name + " is countering " + target.name + "'s attack.");
         PlayParticlesOnTarget(caster);
-        PingNumberOnTarget("DODGED",true,caster);
-        caster.Attack(target,false);
+        MiniTextGenerator.current.CreateText("DODGED",caster.transform);
+        caster.Attack(target,dat);
     }
 
 }

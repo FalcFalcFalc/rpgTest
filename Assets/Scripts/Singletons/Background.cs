@@ -15,6 +15,33 @@ public class Background : MonoBehaviour
     void Awake() {
         current = this;
     }
+    
+    [ContextMenu("BlackOut")]
+    public void BlackOut(){
+        if (currentlyFading != null) StopCoroutine(currentlyFading);
+        
+        foreach (Transform item in transform)
+        {
+            item.GetComponent<SpriteRenderer>().color = Color.black;
+        }
+        currentlyFading = StartCoroutine(FadeToNormal());
+    }
+
+    Coroutine currentlyFading;
+
+    IEnumerator FadeToNormal(){
+        yield return new WaitForSeconds(0.1f);
+
+        Color starting = transform.GetChild(0).GetComponent<SpriteRenderer>().color;
+        for (int i = 0; i < 50; i++)
+        {
+            yield return new WaitForSeconds(0.02f);
+            foreach (Transform item in transform)
+            {
+                item.GetComponent<SpriteRenderer>().color = Color.Lerp(starting, Color.white, i/20f);
+            }
+        }
+    }
 
     void Start() {
         do
@@ -37,7 +64,7 @@ public class Background : MonoBehaviour
     void Update()
     {
         transform.position = transform.position + direccion.normalized * velocidad * Time.deltaTime;
-        if(transform.position.magnitude >= alc){
+        if((transform.position - Vector3.forward * transform.position.z).magnitude >= alc){
             transform.position = transform.position - direccion.normalized * alc;
         }
     }

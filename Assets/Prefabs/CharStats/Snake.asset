@@ -12,14 +12,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50ec7cf452e54fe4e8c1a80ddedb1182, type: 3}
   m_Name: Snake
   m_EditorClassIdentifier: 
-  unitName: Sssnake
-  might: 8
+  unitName: Snakeman
+  might: 12
   speed: 11
   will: 10
   mind: 3
+  luck: 10
   atk:
   - {fileID: 11400000, guid: 7203325419071634d9c96b6db5ddabbc, type: 2}
   sup: []
   perk:
   - {fileID: 11400000, guid: 70ff183547613ca40a714d4186f2e9f2, type: 2}
-  randomPool: 0
+  resistances:
+    array:
+    - Key: 0
+      Value: 5
+    - Key: 1
+      Value: 1
+    - Key: 2
+      Value: 1
+    - Key: 3
+      Value: 3
+    - Key: 4
+      Value: 0
+    - Key: 5
+      Value: 0
+    - Key: 6
+      Value: 0
+    - Key: 7
+      Value: 4
+    - Key: 8
+      Value: 4
+    - Key: 11
+      Value: 0

@@ -5,61 +5,61 @@ using System.Linq;
 
 public class NPC : Unit
 {
-    [SerializeField] Enum.SelectionPriority attackPriority, supportPriority;
+    [SerializeField] Keywords.SelectionPriority attackPriority, supportPriority;
     [SerializeField] bool enemy;
 
     List<Unit> myEnemies{
-        get{return (enemy ? turnHandler.GetPlayer() : turnHandler.GetEnemigos());}
+        get{return (enemy ? pts.allyParty : pts.enemyParty);}
     }
 
     List<Unit> myAllies{
-        get{return (enemy ? turnHandler.GetEnemigos() : turnHandler.GetPlayer());}
+        get{return (enemy ? pts.enemyParty : pts.allyParty);}
     }
 
     public override bool playerParty(){
         return !enemy;
     }
 
-    Unit SelectTarget(List<Unit> units, Enum.SelectionPriority priority){
+    Unit SelectTarget(List<Unit> units, Keywords.SelectionPriority priority){
         List<Unit> sortedUnits = units;
 
         switch(priority){
-            case Enum.SelectionPriority.MostBuffed:
-                sortedUnits = units.OrderByDescending(input=>input.buffAgility+input.buffAttack+input.buffInteligence).ToList();
+            case Keywords.SelectionPriority.MostBuffed:
+                sortedUnits = units.OrderByDescending(input=>input.buffDEX+input.buffDMG+input.buffDEF).ToList();
                 break;
-            case Enum.SelectionPriority.LeastBuffed:
-                sortedUnits = units.OrderBy(input=>input.buffAgility+input.buffAttack+input.buffInteligence).ToList();
+            case Keywords.SelectionPriority.LeastBuffed:
+                sortedUnits = units.OrderBy(input=>input.buffDEX+input.buffDMG+input.buffDEF).ToList();
                 break;
-            case Enum.SelectionPriority.MostATK:
+            case Keywords.SelectionPriority.MostATK:
                 sortedUnits = units.OrderByDescending(input=>input.getAttack).ToList();
                 break;
-            case Enum.SelectionPriority.MostINT:
+            case Keywords.SelectionPriority.MostINT:
                 sortedUnits = units.OrderByDescending(input=>input.getInteligence).ToList();
                 break;
-            case Enum.SelectionPriority.MostDEX:
+            case Keywords.SelectionPriority.MostDEX:
                 sortedUnits = units.OrderByDescending(input=>input.getAgility).ToList();
                 break;
-            case Enum.SelectionPriority.MostHP:
+            case Keywords.SelectionPriority.MostHP:
                 sortedUnits = units.OrderByDescending(input=>input.getCurrentHP).ToList();
                 break;
-            case Enum.SelectionPriority.LeastATK:
+            case Keywords.SelectionPriority.LeastATK:
                 sortedUnits = units.OrderBy(input=>input.getAttack).ToList();
                 break;
-            case Enum.SelectionPriority.LeastINT:
+            case Keywords.SelectionPriority.LeastINT:
                 sortedUnits = units.OrderBy(input=>input.getInteligence).ToList();
                 break;
-            case Enum.SelectionPriority.LeastDEX:
+            case Keywords.SelectionPriority.LeastDEX:
                 sortedUnits = units.OrderBy(input=>input.getAgility).ToList();
                 break;
-            case Enum.SelectionPriority.LeastHP:
+            case Keywords.SelectionPriority.LeastHP:
                 sortedUnits = units.OrderBy(input=>input.getCurrentHP).ToList();
                 break;
-            case Enum.SelectionPriority.NeedsHealing:
+            case Keywords.SelectionPriority.NeedsHealing:
                 sortedUnits = units.OrderBy(input=>input.getCurrentHpPercentage).ToList();
                 while(sortedUnits.Count > 0 && sortedUnits[0].getCurrentHpPercentage > .35f)
                     sortedUnits.Remove(sortedUnits[0]);
                 break;
-            case Enum.SelectionPriority.Random:
+            case Keywords.SelectionPriority.Random:
                 sortedUnits = units.OrderByDescending(input=>Random.Range(0f,1f)).ToList();
                 break;
         }
@@ -88,7 +88,7 @@ public class NPC : Unit
     }
 
     IEnumerator ArtificialInteligence(){
-        yield return new WaitForSeconds(turnHandler.duration);
+        yield return new WaitForSeconds(.35f);
         Unit mostWoundedAlly = SelectTarget(myAllies, supportPriority),
              attackTarget = SelectTarget(myEnemies, attackPriority);
 
@@ -100,10 +100,7 @@ public class NPC : Unit
         {
             Attack(attackTarget);
         }
-        else
-        {
-            NextTurn();
-        }
+        Deactivate();
     }
 
 }

@@ -14,6 +14,11 @@ public class InfoDisplayerTrigger : MonoBehaviour, IPointerEnterHandler, IPointe
         GetComponent<Image>().sprite = desc.image;
     }
 
+    public void Set(string text, string subtext){
+        title = text;
+        description = subtext;
+    }
+
     private void OnMouseEnter() {
         InfoDisplayer.current.Show(desc);
     }

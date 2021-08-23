@@ -53,9 +53,19 @@ public static class FalcTools
         }
     }
 
-
-    
-
+/*
+    /// <summary>
+    /// Permite que la clase sea llamada
+    /// estáticamente usando CLASE.current
+    /// </summary>
+    public class Singleton : MonoBehaviour
+    {
+        public static ??? current;
+        void Awake(){
+            current = this.¿¿¿;
+        }
+    }
+*/
     /// <summary>
     /// Convierte (x, y, z) en (x, 0, z).
     /// </summary>

@@ -5,11 +5,17 @@ using TMPro;
 
 public class BattleNumber : MonoBehaviour
 {
-    public void Set(string txt, bool crit){
-        transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText(txt + (crit ? "!" : ""));
+    public void SetCritical(){
+        transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText(transform.GetChild(0).GetComponent<TextMeshProUGUI>().text + "!");
     }
 
-    public void DestroyMe(){
-        Destroy(gameObject);
+    public BattleNumber SetText(string txt){
+        transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText(txt);
+        return this;
+    }
+
+    public BattleNumber SetColor(Color color){
+        transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = color;
+        return this;
     }
 }

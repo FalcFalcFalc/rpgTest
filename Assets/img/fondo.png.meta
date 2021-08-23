@@ -38,6 +38,21 @@ TextureImporter:
   - first:
       213: 5574326211626165139
     second: fondo_11
+  - first:
+      213: -4195659982075655689
+    second: fondo_12
+  - first:
+      213: 5855100430353965020
+    second: fondo_13
+  - first:
+      213: -6194791315206047232
+    second: fondo_14
+  - first:
+      213: -4565547468345341246
+    second: fondo_15
+  - first:
+      213: 4959991966970704725
+    second: fondo_16
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -149,141 +164,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: fondo_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 130
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 82c57d82054555af0800000000000000
-      internalID: -408327487947842520
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fondo_1
-      rect:
-        serializedVersion: 2
-        x: 65
-        y: 130
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bfa72979297164770800000000000000
-      internalID: 8594582857258793723
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fondo_2
-      rect:
-        serializedVersion: 2
-        x: 130
-        y: 130
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d4b102a6e47f98bd0800000000000000
-      internalID: -2627296991433974963
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fondo_3
-      rect:
-        serializedVersion: 2
-        x: 195
-        y: 130
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b71fec4f0247d2f40800000000000000
-      internalID: 5705343987843264891
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fondo_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 65
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a82891b97722585e0800000000000000
-      internalID: -1908080970022944118
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fondo_5
-      rect:
-        serializedVersion: 2
-        x: 65
-        y: 65
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fc9c8b01d4b8dbdb0800000000000000
-      internalID: -4774506866833569329
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: fondo_6
       rect:
         serializedVersion: 2
-        x: 130
-        y: 65
+        x: 64
+        y: 128
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -299,12 +188,12 @@ TextureImporter:
       name: fondo_7
       rect:
         serializedVersion: 2
-        x: 195
-        y: 65
+        x: 128
+        y: 128
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -317,7 +206,28 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fondo_8
+      name: fondo_14
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00af777ce1ea70aa0800000000000000
+      internalID: -6194791315206047232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fondo_15
       rect:
         serializedVersion: 2
         x: 0
@@ -325,77 +235,35 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da4c95d4bea6e29c0800000000000000
-      internalID: -3950102264309758803
+      spriteID: 2ca871054cae3a0c0800000000000000
+      internalID: -4565547468345341246
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fondo_9
+      name: fondo_16
       rect:
         serializedVersion: 2
-        x: 65
+        x: 64
         y: 0
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b3ec0e0ee43ac470800000000000000
-      internalID: 8415597050737779641
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fondo_10
-      rect:
-        serializedVersion: 2
-        x: 130
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 877164d08f4d47820800000000000000
-      internalID: 2915189020655228792
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fondo_11
-      rect:
-        serializedVersion: 2
-        x: 195
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 393602ac72cfb5d40800000000000000
-      internalID: 5574326211626165139
+      spriteID: 55374103a6e65d440800000000000000
+      internalID: 4959991966970704725
       vertices: []
       indices: 
       edges: []

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b80a18a8e282d2b49bf5cf7e2935539a, type: 3}
+  m_Name: Fireball
+  m_EditorClassIdentifier: 
+  abilityName: Fireball
+  abilityDescription: Casts a fireball on target
+  playParticlesOnMiss: 1
+  image: {fileID: -146929646725768942, guid: 73147b2704ffe7141a227944f21c64d1, type: 3}
+  particles: {fileID: 2247963551953593146, guid: 10c98a65593ac314698372a3aebad89d, type: 3}
+  baseDamage: 5
+  atkMultiplier: 2
+  attackType: 3
+  hitModifier: -2
+  critChance: 0
+  critMultiplier: 1

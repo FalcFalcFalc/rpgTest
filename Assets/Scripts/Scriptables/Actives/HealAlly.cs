@@ -10,7 +10,7 @@ public class HealAlly : Support
     [SerializeField] int baseHealing = 0;
     protected override void SupportAlly(Unit caster, Unit target){
         PlayParticlesOnTarget(target);
-        PingNumberOnTarget((caster.getInteligence+baseHealing).ToString(),false,target);
+        MiniTextGenerator.current.CreateText((caster.getInteligence+baseHealing).ToString(),caster.transform,Keywords.Elements.Blessing);
 
         float heal = caster.getInteligence + baseHealing;
         ModifyHealing(ref heal,target);

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b80a18a8e282d2b49bf5cf7e2935539a, type: 3}
+  m_Name: SandStorm
+  m_EditorClassIdentifier: 
+  abilityName: Sandstorm
+  abilityDescription: Casts a sand tornado on target
+  playParticlesOnMiss: 1
+  image: {fileID: -5016579150957062480, guid: 73147b2704ffe7141a227944f21c64d1, type: 3}
+  particles: {fileID: 8645878846964928664, guid: 292b2b22c01cced4d8b03ac8f7f8f49e, type: 3}
+  baseDamage: 2
+  atkMultiplier: 1
+  attackType: 5
+  hitModifier: 3
+  critChance: 0
+  critMultiplier: 1

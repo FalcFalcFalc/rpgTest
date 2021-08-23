@@ -13,14 +13,36 @@ MonoBehaviour:
   m_Name: Assassin
   m_EditorClassIdentifier: 
   unitName: Ninja Mummy
-  might: 9
-  speed: 8
-  will: 4
+  might: 8
+  speed: 11
+  will: 8
   mind: 5
+  luck: 10
   atk:
   - {fileID: 11400000, guid: 73bcb9c634545894498da3ba6642fc6c, type: 2}
   sup:
   - {fileID: 11400000, guid: 47d8e33f6be6da24db316738799e0fe8, type: 2}
   perk:
   - {fileID: 11400000, guid: d786b3e52975f484d931d23bf05ceead, type: 2}
-  randomPool: 0
+  resistances:
+    array:
+    - Key: 0
+      Value: 0
+    - Key: 1
+      Value: 0
+    - Key: 2
+      Value: 6
+    - Key: 3
+      Value: 2
+    - Key: 4
+      Value: 3
+    - Key: 5
+      Value: 0
+    - Key: 6
+      Value: 3
+    - Key: 7
+      Value: 0
+    - Key: 8
+      Value: 4
+    - Key: 11
+      Value: 0

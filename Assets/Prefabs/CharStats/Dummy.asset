@@ -13,13 +13,34 @@ MonoBehaviour:
   m_Name: Dummy
   m_EditorClassIdentifier: 
   unitName: Dumbass
-  might: 5
+  might: 10
   speed: 3
   will: 5
   mind: 2
+  luck: 10
   atk:
-  - {fileID: 11400000, guid: 1dc02505e0872c241923eb9031ada9fd, type: 2}
+  - {fileID: 11400000, guid: 6e3aff6a3b10cf94bafe37addc5dea7f, type: 2}
   sup: []
-  perk:
-  - {fileID: 11400000, guid: c5545ae66db1c2d49b7df3f9e9dba364, type: 2}
-  randomPool: 0
+  perk: []
+  resistances:
+    array:
+    - Key: 0
+      Value: 0
+    - Key: 1
+      Value: 0
+    - Key: 2
+      Value: 1
+    - Key: 3
+      Value: 3
+    - Key: 4
+      Value: 0
+    - Key: 5
+      Value: 0
+    - Key: 6
+      Value: 0
+    - Key: 7
+      Value: 0
+    - Key: 8
+      Value: 0
+    - Key: 11
+      Value: 3
